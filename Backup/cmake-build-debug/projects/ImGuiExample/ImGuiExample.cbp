@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ImGuiExample"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\exts\;CMake Files\exts\glfw-3.1.1\;CMake Files\exts\glfw-3.1.1\src\;CMake Files\exts\glew\;CMake Files\projects\;CMake Files\projects\ImGuiExample\;CMake Files\projects\Mathlib\;CMake Files\projects\Solution\;CMake Files\projects\example\;CMake Files\engine\;CMake Files\engine\core\;CMake Files\engine\render\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ImGuiExample">
+				<Option output="/home/ponste-5/Documents/GIT/ponste-5/S0007E/bin/ImGuiExample" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="$&lt;$&lt;CONFIG:Debug&gt;:/home/ponste-5/Documents/GIT/ponste-5/S0007E/bin&gt;"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_STATIC"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/engine"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glew/include"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/include"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/imgui"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/imgui/examples/opengl3_example"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/nanovg/src"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 ImGuiExample"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ImGuiExample/fast">
+				<Option output="/home/ponste-5/Documents/GIT/ponste-5/S0007E/bin/ImGuiExample" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="$&lt;$&lt;CONFIG:Debug&gt;:/home/ponste-5/Documents/GIT/ponste-5/S0007E/bin&gt;"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_STATIC"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/engine"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glew/include"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/include"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/imgui"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/imgui/examples/opengl3_example"/>
+					<Add directory="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/nanovg/src"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 ImGuiExample/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ponste-5/Documents/GIT/ponste-5/S0007E/cmake-build-debug/projects/ImGuiExample/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/ImGuiExample/code/exampleapp.cc">
+			<Option target="ImGuiExample"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/ImGuiExample/code/exampleapp.h">
+			<Option target="ImGuiExample"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/ImGuiExample/code/main.cc">
+			<Option target="ImGuiExample"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\exts\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glfw-3.1.1/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\exts\glfw-3.1.1\src\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glew/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\exts\glew\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/exts/glew/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\exts\glew\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/ImGuiExample/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\ImGuiExample\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/ImGuiExample/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\ImGuiExample\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/Mathlib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\Mathlib\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/Mathlib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\Mathlib\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/Solution/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\Solution\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/Solution/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\Solution\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/example/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\example\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/projects/example/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\projects\example\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/engine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\engine\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/engine/core/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\engine\core\"/>
+		</Unit>
+		<Unit filename="/home/ponste-5/Documents/GIT/ponste-5/S0007E/engine/render/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\engine\render\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

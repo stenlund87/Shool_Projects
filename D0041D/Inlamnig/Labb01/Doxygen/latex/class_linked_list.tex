@@ -1,0 +1,226 @@
+\hypertarget{class_linked_list}{\section{Linked\-List$<$ T $>$ Class Template Reference}
+\label{class_linked_list}\index{Linked\-List$<$ T $>$@{Linked\-List$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$Linked\-List.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_linked_list_a3c20fcfec867e867f541061a09fc640c}{Linked\-List} ()
+\item 
+\hyperlink{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}{$\sim$\-Linked\-List} ()
+\item 
+bool \hyperlink{class_linked_list_a66623a06d807357884006e8724c82297}{is\-Off} ()
+\item 
+int \hyperlink{class_linked_list_a5d442d070c04f5a223ba3963a092b916}{item} ()
+\item 
+void \hyperlink{class_linked_list_a46632fdbf5a64821dbe642070416b7c6}{start} ()
+\item 
+void \hyperlink{class_linked_list_a5c00242d2105ab8057af3efa68c18af4}{forth} ()
+\item 
+void \hyperlink{class_linked_list_a467c23980e0c463c12a3a820743b180b}{insert\-Before} (int num)
+\item 
+void \hyperlink{class_linked_list_ae28327cccd9acd61c33a6b51631ffdee}{remove\-At} ()
+\item 
+int \hyperlink{class_linked_list_a7eba1203d539345805a669f2ca23cf66}{Get\-\_\-\-Size} ()
+\item 
+\hyperlink{class_linked_list_a7bf2d4b9ac8f9bb493e4e1237adb981a}{Linked\-List} (int size)
+\item 
+\hyperlink{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}{$\sim$\-Linked\-List} ()
+\item 
+bool \hyperlink{class_linked_list_a66623a06d807357884006e8724c82297}{is\-Off} ()
+\item 
+T \hyperlink{class_linked_list_a5d442d070c04f5a223ba3963a092b916}{item} ()
+\item 
+void \hyperlink{class_linked_list_a46632fdbf5a64821dbe642070416b7c6}{start} ()
+\item 
+void \hyperlink{class_linked_list_a5c00242d2105ab8057af3efa68c18af4}{forth} ()
+\item 
+void \hyperlink{class_linked_list_ad88b2169453b763c78ba739551857db4}{insert\-Before} (T data)
+\item 
+void \hyperlink{class_linked_list_ae28327cccd9acd61c33a6b51631ffdee}{remove\-At} ()
+\item 
+void \hyperlink{class_linked_list_a3a83eb87f262980e4681e4c94ee05136}{whole} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_node}{Node} $\ast$ \hyperlink{class_linked_list_a2d1f848e19caa3f180b7fa6938125bba}{head}
+\item 
+\hyperlink{struct_node}{Node} $\ast$ \hyperlink{class_linked_list_ac31fae6ecb440b8d069790e5294f82fe}{current}
+\item 
+\hyperlink{struct_node}{Node} $\ast$ \hyperlink{class_linked_list_a3489a27822d31002e3ffeea44b402296}{previous}
+\item 
+int \hyperlink{class_linked_list_affff5ce490bbe41e4d1bcb21b846891c}{list\-\_\-size}
+\item 
+int \hyperlink{class_linked_list_a2e6a6b5a560b362c8f03cca2183c2710}{head}
+\item 
+int \hyperlink{class_linked_list_ae6821bb450a08c7e918e477b747667c1}{iteratos\-Pos}
+\item 
+int \hyperlink{class_linked_list_ad8fb5d6184b9d23087bd4916722ee3ae}{previous}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_linked_list_a3c20fcfec867e867f541061a09fc640c}{\index{Linked\-List@{Linked\-List}!Linked\-List@{Linked\-List}}
+\index{Linked\-List@{Linked\-List}!LinkedList@{Linked\-List}}
+\subsubsection[{Linked\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Linked\-List}$<$ T $>$\-::{\bf Linked\-List} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a3c20fcfec867e867f541061a09fc640c}
+\hypertarget{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}{\index{Linked\-List@{Linked\-List}!$\sim$\-Linked\-List@{$\sim$\-Linked\-List}}
+\index{$\sim$\-Linked\-List@{$\sim$\-Linked\-List}!LinkedList@{Linked\-List}}
+\subsubsection[{$\sim$\-Linked\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Linked\-List}$<$ T $>$\-::$\sim${\bf Linked\-List} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}
+\hypertarget{class_linked_list_a7bf2d4b9ac8f9bb493e4e1237adb981a}{\index{Linked\-List@{Linked\-List}!Linked\-List@{Linked\-List}}
+\index{Linked\-List@{Linked\-List}!LinkedList@{Linked\-List}}
+\subsubsection[{Linked\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Linked\-List}$<$ T $>$\-::{\bf Linked\-List} (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a7bf2d4b9ac8f9bb493e4e1237adb981a}
+\hypertarget{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}{\index{Linked\-List@{Linked\-List}!$\sim$\-Linked\-List@{$\sim$\-Linked\-List}}
+\index{$\sim$\-Linked\-List@{$\sim$\-Linked\-List}!LinkedList@{Linked\-List}}
+\subsubsection[{$\sim$\-Linked\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Linked\-List}$<$ T $>$\-::$\sim${\bf Linked\-List} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_linked_list_a5c00242d2105ab8057af3efa68c18af4}{\index{Linked\-List@{Linked\-List}!forth@{forth}}
+\index{forth@{forth}!LinkedList@{Linked\-List}}
+\subsubsection[{forth}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::forth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a5c00242d2105ab8057af3efa68c18af4}
+\hypertarget{class_linked_list_a5c00242d2105ab8057af3efa68c18af4}{\index{Linked\-List@{Linked\-List}!forth@{forth}}
+\index{forth@{forth}!LinkedList@{Linked\-List}}
+\subsubsection[{forth}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::forth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a5c00242d2105ab8057af3efa68c18af4}
+$\ast$\-Points current and previous a to Nodes next \hypertarget{class_linked_list_a7eba1203d539345805a669f2ca23cf66}{\index{Linked\-List@{Linked\-List}!Get\-\_\-\-Size@{Get\-\_\-\-Size}}
+\index{Get\-\_\-\-Size@{Get\-\_\-\-Size}!LinkedList@{Linked\-List}}
+\subsubsection[{Get\-\_\-\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Linked\-List}$<$ T $>$\-::Get\-\_\-\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a7eba1203d539345805a669f2ca23cf66}
+$\ast$\-Method that is used in unit tester \hypertarget{class_linked_list_ad88b2169453b763c78ba739551857db4}{\index{Linked\-List@{Linked\-List}!insert\-Before@{insert\-Before}}
+\index{insert\-Before@{insert\-Before}!LinkedList@{Linked\-List}}
+\subsubsection[{insert\-Before}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::insert\-Before (
+\begin{DoxyParamCaption}
+\item[{T}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_ad88b2169453b763c78ba739551857db4}
+\hypertarget{class_linked_list_a467c23980e0c463c12a3a820743b180b}{\index{Linked\-List@{Linked\-List}!insert\-Before@{insert\-Before}}
+\index{insert\-Before@{insert\-Before}!LinkedList@{Linked\-List}}
+\subsubsection[{insert\-Before}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::insert\-Before (
+\begin{DoxyParamCaption}
+\item[{int}]{num}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a467c23980e0c463c12a3a820743b180b}
+$\ast$\-Inserts a new \hyperlink{struct_node}{Node} between current and previous $\ast$\-Points the new Nodes next to current $\ast$\-Points previous next to the new \hyperlink{struct_node}{Node} $\ast$\-Points previous to the new \hyperlink{struct_node}{Node} \hypertarget{class_linked_list_a66623a06d807357884006e8724c82297}{\index{Linked\-List@{Linked\-List}!is\-Off@{is\-Off}}
+\index{is\-Off@{is\-Off}!LinkedList@{Linked\-List}}
+\subsubsection[{is\-Off}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Linked\-List}$<$ T $>$\-::is\-Off (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a66623a06d807357884006e8724c82297}
+\hypertarget{class_linked_list_a66623a06d807357884006e8724c82297}{\index{Linked\-List@{Linked\-List}!is\-Off@{is\-Off}}
+\index{is\-Off@{is\-Off}!LinkedList@{Linked\-List}}
+\subsubsection[{is\-Off}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Linked\-List}$<$ T $>$\-::is\-Off (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a66623a06d807357884006e8724c82297}
+$\ast$\-Checks if current == nullptr  true/false \hypertarget{class_linked_list_a5d442d070c04f5a223ba3963a092b916}{\index{Linked\-List@{Linked\-List}!item@{item}}
+\index{item@{item}!LinkedList@{Linked\-List}}
+\subsubsection[{item}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T {\bf Linked\-List}$<$ T $>$\-::item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a5d442d070c04f5a223ba3963a092b916}
+\hypertarget{class_linked_list_a5d442d070c04f5a223ba3963a092b916}{\index{Linked\-List@{Linked\-List}!item@{item}}
+\index{item@{item}!LinkedList@{Linked\-List}}
+\subsubsection[{item}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T {\bf Linked\-List}$<$ T $>$\-::item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a5d442d070c04f5a223ba3963a092b916}
+$\ast$\-Checks if\-Off()  the value of the \hyperlink{struct_node}{Node} that current is pointing to \hypertarget{class_linked_list_ae28327cccd9acd61c33a6b51631ffdee}{\index{Linked\-List@{Linked\-List}!remove\-At@{remove\-At}}
+\index{remove\-At@{remove\-At}!LinkedList@{Linked\-List}}
+\subsubsection[{remove\-At}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::remove\-At (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_ae28327cccd9acd61c33a6b51631ffdee}
+\hypertarget{class_linked_list_ae28327cccd9acd61c33a6b51631ffdee}{\index{Linked\-List@{Linked\-List}!remove\-At@{remove\-At}}
+\index{remove\-At@{remove\-At}!LinkedList@{Linked\-List}}
+\subsubsection[{remove\-At}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::remove\-At (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_ae28327cccd9acd61c33a6b51631ffdee}
+$\ast$\-Calls \hyperlink{class_linked_list_a66623a06d807357884006e8724c82297}{is\-Off()} and goes forth is false $\ast$\-Removes the \hyperlink{struct_node}{Node} that current is pointing to and repoints current to its next $\ast$\-Points previous next to \char`\"{}new\char`\"{} current \hypertarget{class_linked_list_a46632fdbf5a64821dbe642070416b7c6}{\index{Linked\-List@{Linked\-List}!start@{start}}
+\index{start@{start}!LinkedList@{Linked\-List}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a46632fdbf5a64821dbe642070416b7c6}
+\hypertarget{class_linked_list_a46632fdbf5a64821dbe642070416b7c6}{\index{Linked\-List@{Linked\-List}!start@{start}}
+\index{start@{start}!LinkedList@{Linked\-List}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a46632fdbf5a64821dbe642070416b7c6}
+$\ast$\-Points current to heads Nodes next $\ast$\-Points previous to the same \hyperlink{struct_node}{Node} as head \hypertarget{class_linked_list_a3a83eb87f262980e4681e4c94ee05136}{\index{Linked\-List@{Linked\-List}!whole@{whole}}
+\index{whole@{whole}!LinkedList@{Linked\-List}}
+\subsubsection[{whole}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Linked\-List}$<$ T $>$\-::whole (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_linked_list_a3a83eb87f262980e4681e4c94ee05136}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_linked_list_ac31fae6ecb440b8d069790e5294f82fe}{\index{Linked\-List@{Linked\-List}!current@{current}}
+\index{current@{current}!LinkedList@{Linked\-List}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Node}$\ast$ {\bf Linked\-List}$<$ T $>$\-::current\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linked_list_ac31fae6ecb440b8d069790e5294f82fe}
+\hypertarget{class_linked_list_a2e6a6b5a560b362c8f03cca2183c2710}{\index{Linked\-List@{Linked\-List}!head@{head}}
+\index{head@{head}!LinkedList@{Linked\-List}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Linked\-List}$<$ T $>$\-::head\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linked_list_a2e6a6b5a560b362c8f03cca2183c2710}
+\hypertarget{class_linked_list_a2d1f848e19caa3f180b7fa6938125bba}{\index{Linked\-List@{Linked\-List}!head@{head}}
+\index{head@{head}!LinkedList@{Linked\-List}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Node}$\ast$ {\bf Linked\-List}$<$ T $>$\-::head\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linked_list_a2d1f848e19caa3f180b7fa6938125bba}
+\hypertarget{class_linked_list_ae6821bb450a08c7e918e477b747667c1}{\index{Linked\-List@{Linked\-List}!iteratos\-Pos@{iteratos\-Pos}}
+\index{iteratos\-Pos@{iteratos\-Pos}!LinkedList@{Linked\-List}}
+\subsubsection[{iteratos\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Linked\-List}$<$ T $>$\-::iteratos\-Pos\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linked_list_ae6821bb450a08c7e918e477b747667c1}
+\hypertarget{class_linked_list_affff5ce490bbe41e4d1bcb21b846891c}{\index{Linked\-List@{Linked\-List}!list\-\_\-size@{list\-\_\-size}}
+\index{list\-\_\-size@{list\-\_\-size}!LinkedList@{Linked\-List}}
+\subsubsection[{list\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Linked\-List}$<$ T $>$\-::list\-\_\-size\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linked_list_affff5ce490bbe41e4d1bcb21b846891c}
+\hypertarget{class_linked_list_ad8fb5d6184b9d23087bd4916722ee3ae}{\index{Linked\-List@{Linked\-List}!previous@{previous}}
+\index{previous@{previous}!LinkedList@{Linked\-List}}
+\subsubsection[{previous}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Linked\-List}$<$ T $>$\-::previous\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linked_list_ad8fb5d6184b9d23087bd4916722ee3ae}
+\hypertarget{class_linked_list_a3489a27822d31002e3ffeea44b402296}{\index{Linked\-List@{Linked\-List}!previous@{previous}}
+\index{previous@{previous}!LinkedList@{Linked\-List}}
+\subsubsection[{previous}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Node}$\ast$ {\bf Linked\-List}$<$ T $>$\-::previous\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linked_list_a3489a27822d31002e3ffeea44b402296}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+//afs/ltu.\-se/students/all/ponste-\/5/\-My Documents/\-Programmering\-\_\-\-Labbar/\-D0041\-D/\-Labb01/\-Linked\-List/\hyperlink{_linked_list_8h}{Linked\-List.\-h}\item 
+//afs/ltu.\-se/students/all/ponste-\/5/\-My Documents/\-Programmering\-\_\-\-Labbar/\-D0041\-D/\-Labb01/\-Linked\-List/\hyperlink{_list___array_8h}{List\-\_\-\-Array.\-h}\item 
+//afs/ltu.\-se/students/all/ponste-\/5/\-My Documents/\-Programmering\-\_\-\-Labbar/\-D0041\-D/\-Labb01/\-Linked\-List/\hyperlink{_linked_list_8cpp}{Linked\-List.\-cpp}\end{DoxyCompactItemize}

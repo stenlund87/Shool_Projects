@@ -1,0 +1,165 @@
+\hypertarget{classquicksort}{\section{quicksort Class Reference}
+\label{classquicksort}\index{quicksort@{quicksort}}
+}
+
+
+{\ttfamily \#include $<$quicksort.\-h$>$}
+
+Inheritance diagram for quicksort\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classquicksort}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classquicksort_a2b871781339bcfc47a4b3fa2bff0e294}{quicksort} (int size)
+\item 
+std\-::string \hyperlink{classquicksort_a717645331fe70d884be40e17049f24de}{name} ()
+\item 
+void \hyperlink{classquicksort_a6bf365b9aa1c8209d1f61c290f741c4f}{min\-\_\-sort} (int $\ast$\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}, int left, int size)
+\begin{DoxyCompactList}\small\item\em sorterings metoden som kallas i min\-\_\-sort för quicksort \end{DoxyCompactList}\item 
+void \hyperlink{classquicksort_a71ed890d279404d763b8cdabebb5cfb1}{min\-\_\-sort} (int $\ast$\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}, int size)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktionen som vi kallar i funktionen runtime som ligger i randtime klassen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Headerfil till insertionsort för arrayer 
+
+Definition at line 5 of file quicksort.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classquicksort_a2b871781339bcfc47a4b3fa2bff0e294}{\index{quicksort@{quicksort}!quicksort@{quicksort}}
+\index{quicksort@{quicksort}!quicksort@{quicksort}}
+\subsubsection[{quicksort}]{\setlength{\rightskip}{0pt plus 5cm}quicksort\-::quicksort (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{classquicksort_a2b871781339bcfc47a4b3fa2bff0e294}
+konstruktor för quicksort 
+
+Definition at line 4 of file quicksort.\-cpp.
+
+
+\begin{DoxyCode}
+:\hyperlink{classrandtime_aa28c1fccfd2a95a49d852733c83ed30f}{randtime}(size)\{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classquicksort_a6bf365b9aa1c8209d1f61c290f741c4f}{\index{quicksort@{quicksort}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!quicksort@{quicksort}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void quicksort\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{arr, }
+\item[{int}]{left, }
+\item[{int}]{right}
+\end{DoxyParamCaption}
+)}}\label{classquicksort_a6bf365b9aa1c8209d1f61c290f741c4f}
+
+
+sorterings metoden som kallas i min\-\_\-sort för quicksort 
+
+sorteringsmetod för quicksorten $<$ Räknar ut en \char`\"{}medianvärde\char`\"{} som används för att jämföra alla tal i arrayen
+
+$<$ Medans värdet som vänstra iteratorn \char`\"{}pekar\char`\"{} på är mindre än pivot så flyttar vi iteratorn ett steg åt höger
+
+$<$ Medans värdet som högra iteratorn \char`\"{}pekar\char`\"{} på är större så flyttar vi iteratorn ett steg åt vänster 
+
+Definition at line 17 of file quicksort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} pivot = \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[(left + right)/2]; 
+    \textcolor{keywordtype}{int} l = left;
+    \textcolor{keywordtype}{int} r = right;
+    \textcolor{keywordflow}{while}(l <= r)
+    \{
+        \textcolor{keywordflow}{while} (\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[l] < pivot)       
+        \{
+            l++;        
+        \}
+
+        \textcolor{keywordflow}{while}(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[r] > pivot)        
+        \{
+            r--;
+        \}
+
+        \textcolor{keywordflow}{if}(l <= r)
+        \{
+            \textcolor{keywordtype}{int} temp = \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[l];
+            \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[l] = \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[r];
+            \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[r] = temp;
+            l++;
+            r--;
+        \}
+    \}
+
+    \textcolor{keywordflow}{if}(left < r)
+    \{
+        \hyperlink{classquicksort_a6bf365b9aa1c8209d1f61c290f741c4f}{min\_sort}(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}, left, r);
+    \}
+    \textcolor{keywordflow}{if}(l < right)
+    \{
+        \hyperlink{classquicksort_a6bf365b9aa1c8209d1f61c290f741c4f}{min\_sort}(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}, l, right);
+    \}
+\}
+\end{DoxyCode}
+\hypertarget{classquicksort_a71ed890d279404d763b8cdabebb5cfb1}{\index{quicksort@{quicksort}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!quicksort@{quicksort}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void quicksort\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{arr, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classquicksort_a71ed890d279404d763b8cdabebb5cfb1}
+
+
+sorteringsfunktionen som vi kallar i funktionen runtime som ligger i randtime klassen 
+
+funktion som kallas från runtime för att sortera 
+
+Reimplemented from \hyperlink{classrandtime_af933fcf0a3fbe5cc982c9cdc8a3e3e9d}{randtime}.
+
+
+
+Definition at line 55 of file quicksort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \hyperlink{classquicksort_a6bf365b9aa1c8209d1f61c290f741c4f}{min\_sort}(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr},0,size-1);
+\}
+\end{DoxyCode}
+\hypertarget{classquicksort_a717645331fe70d884be40e17049f24de}{\index{quicksort@{quicksort}!name@{name}}
+\index{name@{name}!quicksort@{quicksort}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string quicksort\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classquicksort_a717645331fe70d884be40e17049f24de}
+funktion för att returnera namn av klass/sorteringmetod 
+
+Reimplemented from \hyperlink{classrandtime_ad2b4e4e33ca4372ff6b6d5843a177b4d}{randtime}.
+
+
+
+Definition at line 6 of file quicksort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Quicksort"};
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/quicksort.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/quicksort.\-cpp\end{DoxyCompactItemize}

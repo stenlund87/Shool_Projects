@@ -1,0 +1,480 @@
+Quicksort
+1000
+0 seconds
+random
+-----------------------------------------
+
+Quicksort
+10000
+0.0010001 seconds
+random
+-----------------------------------------
+
+Quicksort
+100000
+0.0130013 seconds
+random
+-----------------------------------------
+
+Quicksort
+1000000
+0.144014 seconds
+random
+-----------------------------------------
+
+Quicksort
+10000000
+1.66717 seconds
+random
+-----------------------------------------
+
+Quicksort
+100000000
+17.9768 seconds
+random
+-----------------------------------------
+
+Vector_Quick
+1000
+0.0010001 seconds
+random
+
+Vector_Quick
+10000
+0.0130013 seconds
+random
+
+Vector_Quick
+100000
+0.168017 seconds
+random
+
+Vector_Quick
+1000000
+2.0192 seconds
+random
+
+Vector_Quick
+10000000
+23.7524 seconds
+random
+
+Vector_Quick
+100000000
+262.659 seconds
+random
+
+Quicksort
+1000
+0 seconds
+Inverted
+-----------------------------------------
+
+Quicksort
+10000
+0.0010001 seconds
+Inverted
+-----------------------------------------
+
+Quicksort
+100000
+0.0040004 seconds
+Inverted
+-----------------------------------------
+
+Quicksort
+1000000
+0.0470047 seconds
+Inverted
+-----------------------------------------
+
+Quicksort
+10000000
+0.547055 seconds
+Inverted
+-----------------------------------------
+
+Quicksort
+100000000
+6.35264 seconds
+Inverted
+-----------------------------------------
+
+Vector_Quick
+1000
+0.0010001 seconds
+Inverted
+
+Vector_Quick
+10000
+0.0070007 seconds
+Inverted
+
+Vector_Quick
+100000
+0.0890089 seconds
+Inverted
+
+Vector_Quick
+1000000
+0.963096 seconds
+Inverted
+
+Vector_Quick
+10000000
+11.3881 seconds
+Inverted
+
+Vector_Quick
+100000000
+127.054 seconds
+Inverted
+
+Quicksort
+1000
+0 seconds
+Sorted
+-----------------------------------------
+
+Quicksort
+10000
+0.0010001 seconds
+Sorted
+-----------------------------------------
+
+Quicksort
+100000
+0.0040004 seconds
+Sorted
+-----------------------------------------
+
+Quicksort
+1000000
+0.0460046 seconds
+Sorted
+-----------------------------------------
+
+Quicksort
+10000000
+0.543054 seconds
+Sorted
+-----------------------------------------
+
+Vector_Quick
+1000
+0.0010001 seconds
+Sorted
+
+Vector_Quick
+10000
+0.0070007 seconds
+Sorted
+
+Vector_Quick
+100000
+0.080008 seconds
+Sorted
+
+Vector_Quick
+1000000
+0.883088 seconds
+Sorted
+
+Vector_Quick
+10000000
+10.297 seconds
+Sorted
+
+Heapsort
+1000
+0 seconds
+random
+-----------------------------------------
+
+Heapsort
+10000
+0.0020002 seconds
+random
+-----------------------------------------
+
+Heapsort
+100000
+0.0180018 seconds
+random
+-----------------------------------------
+
+Heapsort
+1000000
+0.216022 seconds
+random
+-----------------------------------------
+
+Heapsort
+10000000
+3.30933 seconds
+random
+-----------------------------------------
+
+Vector_Heap
+1000
+0.0020002 seconds
+random
+
+Vector_Heap
+10000
+0.0340034 seconds
+random
+
+Vector_Heap
+100000
+0.422042 seconds
+random
+
+Vector_Heap
+1000000
+5.05351 seconds
+random
+
+Vector_Heap
+10000000
+61.0471 seconds
+random
+
+Heapsort
+1000
+0 seconds
+Inverted
+-----------------------------------------
+
+Heapsort
+10000
+0.0020002 seconds
+Inverted
+-----------------------------------------
+
+Heapsort
+100000
+0.0130013 seconds
+Inverted
+-----------------------------------------
+
+Heapsort
+1000000
+0.145014 seconds
+Inverted
+-----------------------------------------
+
+Heapsort
+10000000
+1.63516 seconds
+Inverted
+-----------------------------------------
+
+Vector_Heap
+1000
+0.0030003 seconds
+Inverted
+
+Vector_Heap
+10000
+0.0320032 seconds
+Inverted
+
+Vector_Heap
+100000
+0.406041 seconds
+Inverted
+
+Vector_Heap
+1000000
+4.85649 seconds
+Inverted
+
+Heapsort
+1000
+0 seconds
+Sorted
+-----------------------------------------
+
+Heapsort
+10000
+0.0010001 seconds
+Sorted
+-----------------------------------------
+
+Heapsort
+100000
+0.0130013 seconds
+Sorted
+-----------------------------------------
+
+Heapsort
+1000000
+0.144014 seconds
+Sorted
+-----------------------------------------
+
+Vector_Heap
+1000
+0.0030003 seconds
+Sorted
+
+Vector_Heap
+10000
+0.0350035 seconds
+Sorted
+
+Vector_Heap
+100000
+0.434043 seconds
+Sorted
+
+Vector_Heap
+1000000
+5.14051 seconds
+Sorted
+
+Bucketsort
+1000
+0.0020002 seconds
+random
+-----------------------------------------
+
+Bucketsort
+10000
+0.0190019 seconds
+random
+-----------------------------------------
+
+Bucketsort
+100000
+0.526053 seconds
+random
+-----------------------------------------
+
+Bucketsort
+1000000
+6.17962 seconds
+random
+-----------------------------------------
+
+Vector_Bucket
+1000
+0.0020002 seconds
+random
+
+Vector_Bucket
+10000
+0.0420042 seconds
+random
+
+Vector_Bucket
+100000
+0.50505 seconds
+random
+
+Vector_Bucket
+1000000
+6.42164 seconds
+random
+
+Bucketsort
+1000
+0.0020002 seconds
+Inverted
+-----------------------------------------
+
+Bucketsort
+10000
+0.0190019 seconds
+Inverted
+-----------------------------------------
+
+Bucketsort
+100000
+0.460046 seconds
+Inverted
+-----------------------------------------
+
+Bucketsort
+1000000
+5.92459 seconds
+Inverted
+-----------------------------------------
+
+Vector_Bucket
+1000
+0.0020002 seconds
+Inverted
+
+Vector_Bucket
+10000
+0.020002 seconds
+Inverted
+
+Vector_Bucket
+100000
+0.468047 seconds
+Inverted
+
+Vector_Bucket
+1000000
+5.88059 seconds
+Inverted
+
+Bucketsort
+1000
+0.0010001 seconds
+Sorted
+-----------------------------------------
+
+Bucketsort
+10000
+0.0150015 seconds
+Sorted
+-----------------------------------------
+
+Bucketsort
+100000
+0.444044 seconds
+Sorted
+-----------------------------------------
+
+Bucketsort
+1000000
+5.56456 seconds
+Sorted
+-----------------------------------------
+
+Vector_Bucket
+1000
+0.0020002 seconds
+Sorted
+
+Vector_Bucket
+10000
+0.0170017 seconds
+Sorted
+
+Vector_Bucket
+100000
+0.388039 seconds
+Sorted
+
+Vector_Bucket
+1000000
+5.58756 seconds
+Sorted
+
+Insertionsort
+1000
+0.0010001 seconds
+random
+-----------------------------------------
+
+Insertionsort
+10000
+0.108011 seconds
+random
+-----------------------------------------
+

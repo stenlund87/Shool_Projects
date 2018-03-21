@@ -1,0 +1,398 @@
+\hypertarget{classrandtime}{\section{randtime Class Reference}
+\label{classrandtime}\index{randtime@{randtime}}
+}
+
+
+{\ttfamily \#include $<$randtime.\-h$>$}
+
+Inheritance diagram for randtime\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrandtime}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries sorttype} \{ {\bfseries unsorted}, 
+{\bfseries sorted}, 
+{\bfseries inverted}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrandtime_ac45ed373ab1be5e1644de4046b1e3114}{randtime} (const int \&size)
+\begin{DoxyCompactList}\small\item\em konstruktor \end{DoxyCompactList}\item 
+\hyperlink{classrandtime_aa28c1fccfd2a95a49d852733c83ed30f}{randtime} ()
+\item 
+void \hyperlink{classrandtime_a166b166858af7e695bbd9cfe25639665}{runtime} ()
+\begin{DoxyCompactList}\small\item\em funktionen som kommer ta tid ochn skriva till textfil \end{DoxyCompactList}\item 
+void \hyperlink{classrandtime_aae96e342126355aad72a874b32c8708d}{write} (sorttype h)
+\begin{DoxyCompactList}\small\item\em funktion för att skriva till fil \end{DoxyCompactList}\item 
+int \hyperlink{classrandtime_ab47803f1a20de2d5e90a5f2b3537b8d3}{randomnumber} ()
+\begin{DoxyCompactList}\small\item\em funktion för att få randomnummer \end{DoxyCompactList}\item 
+virtual void \hyperlink{classrandtime_af933fcf0a3fbe5cc982c9cdc8a3e3e9d}{min\-\_\-sort} (int $\ast$\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}, int size)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktion \end{DoxyCompactList}\item 
+virtual std\-::string \hyperlink{classrandtime_ad2b4e4e33ca4372ff6b6d5843a177b4d}{name} ()
+\begin{DoxyCompactList}\small\item\em funktion för att få namn som anävnds till skriviningen \end{DoxyCompactList}\item 
+void \hyperlink{classrandtime_a6d29e5d8d63f303792ea7f5c4400caa2}{print\-\_\-array} ()
+\begin{DoxyCompactList}\small\item\em funktion som skriver ut array \end{DoxyCompactList}\item 
+void \hyperlink{classrandtime_a8d5495ba141f2c55bb04c4f2d4fd0a8f}{fillsort} ()
+\begin{DoxyCompactList}\small\item\em funktion som fyller array så den blir sorterad \end{DoxyCompactList}\item 
+void \hyperlink{classrandtime_a0afe785f2495a0cbd0bad0c1da51b056}{fillrandom} ()
+\begin{DoxyCompactList}\small\item\em funktion som fyller array med random nummer upp till storlekan av arrayen \end{DoxyCompactList}\item 
+void \hyperlink{classrandtime_a9f1c6db70e73096a645aa5e681654a8b}{fillinvert} ()
+\begin{DoxyCompactList}\small\item\em fyller array men inverterat \end{DoxyCompactList}\item 
+void \hyperlink{classrandtime_a0d7fd63d6926e8a0ba9c2ecb104c54e2}{delarr} ()
+\begin{DoxyCompactList}\small\item\em funktion som tar bort array som pekas på \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrandtime_a5fd755512a13db090e572d279d0e002c}{sorttype {\bfseries type}}\label{classrandtime_a5fd755512a13db090e572d279d0e002c}
+
+\item 
+\hypertarget{classrandtime_a4dac03ec063a522b314b68795a787d36}{int $\ast$ \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}}\label{classrandtime_a4dac03ec063a522b314b68795a787d36}
+
+\begin{DoxyCompactList}\small\item\em int pekare för arrays \end{DoxyCompactList}\item 
+\hypertarget{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{int \hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\-\_\-array}}\label{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}
+
+\begin{DoxyCompactList}\small\item\em variable för storleken av array \end{DoxyCompactList}\item 
+\hypertarget{classrandtime_a8e3bdf9fea982f63d8f3fd6f99bab396}{std\-::mt19937 \hyperlink{classrandtime_a8e3bdf9fea982f63d8f3fd6f99bab396}{mt}}\label{classrandtime_a8e3bdf9fea982f63d8f3fd6f99bab396}
+
+\begin{DoxyCompactList}\small\item\em random nummergenerator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrandtime_ad5705760c3195b317b2bb3fd93729914}{double \hyperlink{classrandtime_ad5705760c3195b317b2bb3fd93729914}{run\-\_\-time}}\label{classrandtime_ad5705760c3195b317b2bb3fd93729914}
+
+\begin{DoxyCompactList}\small\item\em variabel för tid som sorteringen tar \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Headerfil till randtime för arrayer 
+
+Definition at line 6 of file randtime.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrandtime_ac45ed373ab1be5e1644de4046b1e3114}{\index{randtime@{randtime}!randtime@{randtime}}
+\index{randtime@{randtime}!randtime@{randtime}}
+\subsubsection[{randtime}]{\setlength{\rightskip}{0pt plus 5cm}randtime\-::randtime (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{size}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_ac45ed373ab1be5e1644de4046b1e3114}
+
+
+konstruktor 
+
+Konstruktor till randtime för arrayer 
+
+Definition at line 13 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr} = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[size];
+    \hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array} = size;
+    \hyperlink{classrandtime_ad5705760c3195b317b2bb3fd93729914}{run\_time}=0;
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_aa28c1fccfd2a95a49d852733c83ed30f}{\index{randtime@{randtime}!randtime@{randtime}}
+\index{randtime@{randtime}!randtime@{randtime}}
+\subsubsection[{randtime}]{\setlength{\rightskip}{0pt plus 5cm}randtime\-::randtime (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_aa28c1fccfd2a95a49d852733c83ed30f}
+default konstruktor 
+
+Definition at line 21 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrandtime_a0d7fd63d6926e8a0ba9c2ecb104c54e2}{\index{randtime@{randtime}!delarr@{delarr}}
+\index{delarr@{delarr}!randtime@{randtime}}
+\subsubsection[{delarr}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::delarr (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_a0d7fd63d6926e8a0ba9c2ecb104c54e2}
+
+
+funktion som tar bort array som pekas på 
+
+funktion för att ta bort dynamiskt allokerade arrayer 
+
+Definition at line 130 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keyword}{delete}[] \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr};
+    \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}=\textcolor{keyword}{nullptr};
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_a9f1c6db70e73096a645aa5e681654a8b}{\index{randtime@{randtime}!fillinvert@{fillinvert}}
+\index{fillinvert@{fillinvert}!randtime@{randtime}}
+\subsubsection[{fillinvert}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::fillinvert (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_a9f1c6db70e73096a645aa5e681654a8b}
+
+
+fyller array men inverterat 
+
+funktion för att fylla array med element i inverterad ordning $<$ sätter vilken sorts ordning arrayen har 
+
+Definition at line 64 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} r=\hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array};
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array}; i++)
+    \{
+        \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[i]=r;
+        r--;
+    \}
+    type=inverted;                                                              
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_a0afe785f2495a0cbd0bad0c1da51b056}{\index{randtime@{randtime}!fillrandom@{fillrandom}}
+\index{fillrandom@{fillrandom}!randtime@{randtime}}
+\subsubsection[{fillrandom}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::fillrandom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_a0afe785f2495a0cbd0bad0c1da51b056}
+
+
+funktion som fyller array med random nummer upp till storlekan av arrayen 
+
+funktion för att fylla array med randomiserat element $<$ sätter vilken sorts ordning arrayen har 
+
+Definition at line 49 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} r;
+    \textcolor{keywordtype}{unsigned} beginning = std::chrono::system\_clock::now().time\_since\_epoch().
+      count(); 
+    \hyperlink{classrandtime_a8e3bdf9fea982f63d8f3fd6f99bab396}{mt}.seed(beginning);
+
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array}; i++)
+    \{
+        r=\hyperlink{classrandtime_ab47803f1a20de2d5e90a5f2b3537b8d3}{randomnumber}();
+        \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[i]=r;
+    \}
+    type=unsorted;                                                              
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_a8d5495ba141f2c55bb04c4f2d4fd0a8f}{\index{randtime@{randtime}!fillsort@{fillsort}}
+\index{fillsort@{fillsort}!randtime@{randtime}}
+\subsubsection[{fillsort}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::fillsort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_a8d5495ba141f2c55bb04c4f2d4fd0a8f}
+
+
+funktion som fyller array så den blir sorterad 
+
+funktion för att fylla array med element i sorterad ordning $<$ sätter vilken sorts ordning arrayen har 
+
+Definition at line 37 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} r=0;
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array}; i++)
+    \{
+        \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[i]=r;
+        r++;
+    \}
+    type=sorted;                                                                
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_af933fcf0a3fbe5cc982c9cdc8a3e3e9d}{\index{randtime@{randtime}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!randtime@{randtime}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{arr, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrandtime_af933fcf0a3fbe5cc982c9cdc8a3e3e9d}
+
+
+sorteringsfunktion 
+
+den virtuella funktion som gör de olika sorteingmetoderna beroende på vilken klass som körs 
+
+Reimplemented in \hyperlink{classquicksort_a71ed890d279404d763b8cdabebb5cfb1}{quicksort}, \hyperlink{class_bucketsort_a9bd618e32f232a3a6a4b1137ac78859a}{Bucketsort}, \hyperlink{class_heapsort_a665e0d683ea39302823b1c6f4fbc9d6b}{Heapsort}, and \hyperlink{class_insertionsort_a1601b5003d875bf878ca44a8538138da}{Insertionsort}.
+
+
+
+Definition at line 117 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_ad2b4e4e33ca4372ff6b6d5843a177b4d}{\index{randtime@{randtime}!name@{name}}
+\index{name@{name}!randtime@{randtime}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string randtime\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrandtime_ad2b4e4e33ca4372ff6b6d5843a177b4d}
+
+
+funktion för att få namn som anävnds till skriviningen 
+
+default konstruktor 
+
+Reimplemented in \hyperlink{classquicksort_a717645331fe70d884be40e17049f24de}{quicksort}, \hyperlink{class_bucketsort_ac14e42957393679bc33d4571809b7d93}{Bucketsort}, \hyperlink{class_heapsort_af85969923c509f6e7c4c9e731577b346}{Heapsort}, and \hyperlink{class_insertionsort_a846199ac2771cfe2d3fe8bdc11403feb}{Insertionsort}.
+
+
+
+Definition at line 31 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Randtime"};
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_a6d29e5d8d63f303792ea7f5c4400caa2}{\index{randtime@{randtime}!print\-\_\-array@{print\-\_\-array}}
+\index{print\-\_\-array@{print\-\_\-array}!randtime@{randtime}}
+\subsubsection[{print\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::print\-\_\-array (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_a6d29e5d8d63f303792ea7f5c4400caa2}
+
+
+funktion som skriver ut array 
+
+visuallierar hela arrayen i ordnning från index 0 till sista 
+
+Definition at line 122 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i<\hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array}; i++)
+    \{
+        std::cout << \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[i] << std::endl;
+    \}
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_ab47803f1a20de2d5e90a5f2b3537b8d3}{\index{randtime@{randtime}!randomnumber@{randomnumber}}
+\index{randomnumber@{randomnumber}!randtime@{randtime}}
+\subsubsection[{randomnumber}]{\setlength{\rightskip}{0pt plus 5cm}int randtime\-::randomnumber (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_ab47803f1a20de2d5e90a5f2b3537b8d3}
+
+
+funktion för att få randomnummer 
+
+funktion för att generera ett randomiserat nummer mellan 0 och storleken 
+
+Definition at line 110 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{   
+    std::uniform\_int\_distribution<int> dist(0,\hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array});
+    \textcolor{keywordflow}{return} dist(\hyperlink{classrandtime_a8e3bdf9fea982f63d8f3fd6f99bab396}{mt});
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_a166b166858af7e695bbd9cfe25639665}{\index{randtime@{randtime}!runtime@{runtime}}
+\index{runtime@{runtime}!randtime@{randtime}}
+\subsubsection[{runtime}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::runtime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_a166b166858af7e695bbd9cfe25639665}
+
+
+funktionen som kommer ta tid ochn skriva till textfil 
+
+funktion för att ta tid och ssedan skriva in det i textfil $<$Skapar första timestampen
+
+$<$Skapar andra timestampen
+
+$<$Räknar ut skillnaden 
+
+Definition at line 76 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keyword}{const} std::type\_info& object\_type = \textcolor{keyword}{typeid}(\textcolor{keyword}{this});
+    sorttype holder;
+    holder= this->type;
+    \textcolor{keyword}{using namespace }std::chrono;
+
+    time\_point<steady\_clock>;
+    steady\_clock::time\_point t0 = steady\_clock::now();                          
+    \hyperlink{classrandtime_af933fcf0a3fbe5cc982c9cdc8a3e3e9d}{min\_sort}(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr},this->\hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array});
+    steady\_clock::time\_point t1 = steady\_clock::now();                          
+    duration<double> time\_span = duration\_cast<duration<double>>(t1 - t0);      
+    \hyperlink{classrandtime_ad5705760c3195b317b2bb3fd93729914}{run\_time} = time\_span.count();
+    \hyperlink{classrandtime_aae96e342126355aad72a874b32c8708d}{write}(holder);
+\}
+\end{DoxyCode}
+\hypertarget{classrandtime_aae96e342126355aad72a874b32c8708d}{\index{randtime@{randtime}!write@{write}}
+\index{write@{write}!randtime@{randtime}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void randtime\-::write (
+\begin{DoxyParamCaption}
+\item[{sorttype}]{h}
+\end{DoxyParamCaption}
+)}}\label{classrandtime_aae96e342126355aad72a874b32c8708d}
+
+
+funktion för att skriva till fil 
+
+funktionen som används till att skriva in i textfilen 
+
+Definition at line 93 of file randtime.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    std::fstream myfile;
+    myfile.open(\textcolor{stringliteral}{"test.txt"},std::ios::app);
+    myfile << \hyperlink{classrandtime_ad2b4e4e33ca4372ff6b6d5843a177b4d}{name}() << std::endl;
+    myfile << \hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array} << std::endl;
+    myfile << \hyperlink{classrandtime_ad5705760c3195b317b2bb3fd93729914}{run\_time} << \textcolor{stringliteral}{" seconds"} << std::endl;
+
+    \textcolor{keywordflow}{if}(h == unsorted) myfile << \textcolor{stringliteral}{"random"} << std::endl;
+    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(h == sorted) myfile << \textcolor{stringliteral}{"Sorted"} << std::endl;
+    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (h == inverted) myfile << \textcolor{stringliteral}{"Inverted"} << std::endl;
+    myfile << \textcolor{stringliteral}{"-----------------------------------------"} << std::endl;
+    myfile << \textcolor{stringliteral}{"\(\backslash\)n"};
+    myfile.close();
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/randtime.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/randtime.\-cpp\end{DoxyCompactItemize}

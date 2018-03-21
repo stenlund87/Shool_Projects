@@ -1,0 +1,278 @@
+\hypertarget{class_quad_tree}{\section{Quad\-Tree$<$ T $>$ Class Template Reference}
+\label{class_quad_tree}\index{Quad\-Tree$<$ T $>$@{Quad\-Tree$<$ T $>$}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_quad_tree_ab99b17f847081ca3e32347480f6dfed1}{Quad\-Tree} (void)
+\item 
+\hyperlink{class_quad_tree_aa04baf2df55240abaca6e414436a6a76}{Quad\-Tree} (float x, float y)
+\item 
+void \hyperlink{class_quad_tree_a22f7b8e8eaf730189559c8813338544e}{Setup} (int width, int height)
+\item 
+bool \hyperlink{class_quad_tree_acf5ee45d199e62fca950366a2e20f700}{Insert\-Element} (const T \&element)
+\item 
+void \hyperlink{class_quad_tree_a8d8050ecd639393b02a75bf4eea8f7ae}{Find\-Element} (int x, int y, int width, int height, vector$<$ T $>$ \&output)
+\item 
+void \hyperlink{class_quad_tree_a481c6a515cb97fa75b52253dc0ab106a}{Split} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_quad_tree_a13868c22c52c5f6e94791eb6670b2ffa}{\hyperlink{class_quad_tree}{Quad\-Tree}$<$ T $>$ $\ast$ {\bfseries ne}}\label{class_quad_tree_a13868c22c52c5f6e94791eb6670b2ffa}
+
+\item 
+\hypertarget{class_quad_tree_aae35ec119c02537dff213864e4ed6987}{\hyperlink{class_quad_tree}{Quad\-Tree}$<$ T $>$ $\ast$ {\bfseries se}}\label{class_quad_tree_aae35ec119c02537dff213864e4ed6987}
+
+\item 
+\hypertarget{class_quad_tree_a4aadb6208554b67d992c8d8391f13148}{\hyperlink{class_quad_tree}{Quad\-Tree}$<$ T $>$ $\ast$ {\bfseries sw}}\label{class_quad_tree_a4aadb6208554b67d992c8d8391f13148}
+
+\item 
+\hypertarget{class_quad_tree_a0d3c88794674ba13871cd3598b02ceb3}{\hyperlink{class_quad_tree}{Quad\-Tree}$<$ T $>$ $\ast$ {\bfseries nw}}\label{class_quad_tree_a0d3c88794674ba13871cd3598b02ceb3}
+
+\item 
+\hypertarget{class_quad_tree_abfe0cf01728bc063a6209f227eec68bf}{float {\bfseries x}}\label{class_quad_tree_abfe0cf01728bc063a6209f227eec68bf}
+
+\item 
+\hypertarget{class_quad_tree_a6cf13d33def9786057a096428f702436}{float {\bfseries y}}\label{class_quad_tree_a6cf13d33def9786057a096428f702436}
+
+\item 
+\hypertarget{class_quad_tree_a99c4b03d8ad33e9f40ccf641d7c26b65}{vector$<$ T $>$ {\bfseries points}}\label{class_quad_tree_a99c4b03d8ad33e9f40ccf641d7c26b65}
+
+\item 
+\hypertarget{class_quad_tree_a8b8236c3ad6b7b2539e0e54462d2396e}{float {\bfseries width}}\label{class_quad_tree_a8b8236c3ad6b7b2539e0e54462d2396e}
+
+\item 
+\hypertarget{class_quad_tree_a2e419af43704d3f0485d6157e24853ef}{float {\bfseries height}}\label{class_quad_tree_a2e419af43704d3f0485d6157e24853ef}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_quad_tree_a8792312eac855b533147b123a2bda1ac}{static const int {\bfseries Max\-Elements} = 4}\label{class_quad_tree_a8792312eac855b533147b123a2bda1ac}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class Quad\-Tree$<$ T $>$}
+
+
+
+Definition at line 17 of file Quadtree.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_quad_tree_ab99b17f847081ca3e32347480f6dfed1}{\index{Quad\-Tree@{Quad\-Tree}!Quad\-Tree@{Quad\-Tree}}
+\index{Quad\-Tree@{Quad\-Tree}!QuadTree@{Quad\-Tree}}
+\subsubsection[{Quad\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Quad\-Tree}$<$ T $>$\-::{\bf Quad\-Tree} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_quad_tree_ab99b17f847081ca3e32347480f6dfed1}
+Default Constructor 
+
+Definition at line 69 of file Quadtree.\-h.
+
+
+\begin{DoxyCode}
+\{
+    x=0.0f;
+    y=0.0f;
+    width = 0.0f;
+    height = 0.0f;
+    ne=\textcolor{keyword}{nullptr};             
+    se=\textcolor{keyword}{nullptr};             
+    sw=\textcolor{keyword}{nullptr};             
+    nw=\textcolor{keyword}{nullptr};
+\}
+\end{DoxyCode}
+\hypertarget{class_quad_tree_aa04baf2df55240abaca6e414436a6a76}{\index{Quad\-Tree@{Quad\-Tree}!Quad\-Tree@{Quad\-Tree}}
+\index{Quad\-Tree@{Quad\-Tree}!QuadTree@{Quad\-Tree}}
+\subsubsection[{Quad\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Quad\-Tree}$<$ T $>$\-::{\bf Quad\-Tree} (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_quad_tree_aa04baf2df55240abaca6e414436a6a76}
+Set the position of child  float x, x-\/position  float y, y-\/position 
+
+Definition at line 86 of file Quadtree.\-h.
+
+
+\begin{DoxyCode}
+\{
+    this->x = x;
+    this->y = y;
+    this->width=0;
+    this->height=0;
+    ne=\textcolor{keyword}{nullptr};             
+    se=\textcolor{keyword}{nullptr};             
+    sw=\textcolor{keyword}{nullptr};             
+    nw=\textcolor{keyword}{nullptr};
+\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_quad_tree_a8d8050ecd639393b02a75bf4eea8f7ae}{\index{Quad\-Tree@{Quad\-Tree}!Find\-Element@{Find\-Element}}
+\index{Find\-Element@{Find\-Element}!QuadTree@{Quad\-Tree}}
+\subsubsection[{Find\-Element}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Quad\-Tree}$<$ T $>$\-::Find\-Element (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{vector$<$ T $>$ \&}]{output}
+\end{DoxyParamCaption}
+)}}\label{class_quad_tree_a8d8050ecd639393b02a75bf4eea8f7ae}
+Find an element in the tree 
+
+Definition at line 166 of file Quadtree.\-h.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{if} (this->points.size() == 0) \textcolor{keywordflow}{return};
+        
+    \textcolor{keywordflow}{if} ( x > this->x + this->width || y > this->y + this->height || y + height
+       < this->y || x + width < this->x)    \textcolor{keywordflow}{return};     \textcolor{comment}{//<Checks if the search area
+       overlaps the tree}
+
+
+    \textcolor{keywordflow}{if} (points.size()!=0)                               \textcolor{comment}{//<As long as the
+       tree's vector contains data we go forth}
+    \{
+        \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<points.size(); i++)
+        \{
+            \textcolor{keywordflow}{if} (points[i].x <=x+width && points[i].y <= y+height && points[i].x
+      >=x && points[i].y>=y)       \textcolor{comment}{//<If the node is withing the search area we insert
+       that node to the output}
+                output.push\_back(points.at(i));
+                
+        \}
+        \textcolor{keywordflow}{if} (points.size() <QuadTree::MaxElements) \textcolor{keywordflow}{return};
+    \}
+
+    \textcolor{keywordflow}{if} (nw == \textcolor{keyword}{nullptr}) \textcolor{keywordflow}{return};  
+    \textcolor{comment}{//Recursive calls to get all values in the search area}
+    nw->FindElement(x, y, width, height , output);              
+    se->FindElement(x, y, width, height , output);              
+    sw->FindElement(x, y, width, height , output);              
+    ne->FindElement(x, y, width, height , output);              
+\}
+\end{DoxyCode}
+\hypertarget{class_quad_tree_acf5ee45d199e62fca950366a2e20f700}{\index{Quad\-Tree@{Quad\-Tree}!Insert\-Element@{Insert\-Element}}
+\index{Insert\-Element@{Insert\-Element}!QuadTree@{Quad\-Tree}}
+\subsubsection[{Insert\-Element}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Quad\-Tree}$<$ T $>$\-::Insert\-Element (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_quad_tree_acf5ee45d199e62fca950366a2e20f700}
+Insert a new element to the tree
+
+
+\begin{DoxyParams}{Parameters}
+{\em element,\hyperlink{struct_quad_tree_element}{Quad\-Tree\-Element}} & to insert in the tree \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 142 of file Quadtree.\-h.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{if} (element.x< x || element.x>width+x || element.y>height+y || element.y<y)
+       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{//<Check if the child that we wanna insert is within the tree
+       boundary}
+    \textcolor{keywordflow}{if}(points.size() < \hyperlink{class_quad_tree}{QuadTree<T>::MaxElements})                                        \textcolor{comment}{
+      //<Check if the tree is full and inserts if its not}
+    \{   
+        points.push\_back(element);
+        \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+    \}
+
+    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (nw==\textcolor{keyword}{nullptr} )                          \textcolor{comment}{//<Split tree if original
+       tree is full}
+    \{
+        \textcolor{keywordflow}{if} (height/2 <0.01 || width/2 <0.01) \textcolor{keywordflow}{return} \textcolor{keyword}{false};  \textcolor{comment}{//<limit on how
+       deep we can go inception style}
+        this->\hyperlink{class_quad_tree_a481c6a515cb97fa75b52253dc0ab106a}{Split}(); 
+    \}
+
+    \textcolor{comment}{//We check in which tree the node belongs to and inserts it if it belongs
+       therre and is not full}
+    \textcolor{keywordflow}{if} (nw->InsertElement(element)==\textcolor{keyword}{true}) \textcolor{keywordflow}{return} \textcolor{keyword}{true};          
+    \textcolor{keywordflow}{if} (se->InsertElement(element)==\textcolor{keyword}{true}) \textcolor{keywordflow}{return} \textcolor{keyword}{true};          
+    \textcolor{keywordflow}{if} (sw->InsertElement(element)==\textcolor{keyword}{true}) \textcolor{keywordflow}{return} \textcolor{keyword}{true};          
+    \textcolor{keywordflow}{if} (ne->InsertElement(element)==\textcolor{keyword}{true}) \textcolor{keywordflow}{return} \textcolor{keyword}{true};          
+\}   
+\end{DoxyCode}
+\hypertarget{class_quad_tree_a22f7b8e8eaf730189559c8813338544e}{\index{Quad\-Tree@{Quad\-Tree}!Setup@{Setup}}
+\index{Setup@{Setup}!QuadTree@{Quad\-Tree}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Quad\-Tree}$<$ T $>$\-::Setup (
+\begin{DoxyParamCaption}
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}}\label{class_quad_tree_a22f7b8e8eaf730189559c8813338544e}
+Method to set witdth and height for the tree 
+
+Definition at line 100 of file Quadtree.\-h.
+
+
+\begin{DoxyCode}
+\{
+    this->width = float(width);
+    this->height = float(height);
+
+    \textcolor{keywordflow}{if}(nw != \textcolor{keyword}{nullptr})           \textcolor{comment}{//<In case we delete a node we wanna maintain
+       the structure of the tree}
+    \{
+        ne->x= width/2;
+        ne->y=y;
+        ne->Setup(width/2,height/2);
+        se->x = width/2;
+        se->y = height/2;
+        se->Setup(width/2,height/2);
+        sw->x= x;
+        sw->y = height/2;
+        sw->Setup(width/2,height/2);
+        nw->x = x;
+        nw->y=y;
+        nw->Setup(width/2,height/2);
+    \}
+\}
+\end{DoxyCode}
+\hypertarget{class_quad_tree_a481c6a515cb97fa75b52253dc0ab106a}{\index{Quad\-Tree@{Quad\-Tree}!Split@{Split}}
+\index{Split@{Split}!QuadTree@{Quad\-Tree}}
+\subsubsection[{Split}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Quad\-Tree}$<$ T $>$\-::Split (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_quad_tree_a481c6a515cb97fa75b52253dc0ab106a}
+Split the tree to smaller trees 
+
+Definition at line 124 of file Quadtree.\-h.
+
+
+\begin{DoxyCode}
+\{
+    
+    ne = \textcolor{keyword}{new} \hyperlink{class_quad_tree_ab99b17f847081ca3e32347480f6dfed1}{QuadTree}(x+width/2,y);
+    ne->Setup(width/2,height/2);
+    se = \textcolor{keyword}{new} \hyperlink{class_quad_tree_ab99b17f847081ca3e32347480f6dfed1}{QuadTree}(x+width/2,y+height/2);
+    se->Setup(width/2,height/2);
+    sw = \textcolor{keyword}{new} \hyperlink{class_quad_tree_ab99b17f847081ca3e32347480f6dfed1}{QuadTree}(x,y+height/2);
+    sw->Setup(width/2,height/2);
+    nw = \textcolor{keyword}{new} \hyperlink{class_quad_tree_ab99b17f847081ca3e32347480f6dfed1}{QuadTree}(x,y);
+    nw->Setup(width/2,height/2);
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/\-Lab3 D0041\-D/\-Lab3 D0041\-D/Quadtree.\-h\end{DoxyCompactItemize}

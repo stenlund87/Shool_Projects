@@ -1,0 +1,33 @@
+
+gen_params = {
+	default = {
+		AltitudeTolerance = 0.5
+		AutoSeedScriptData = ""
+		CellSize = 20
+		ConsumePhysicsMeshes = false
+		CurrentLevelOffset = {
+			X = 0
+			Y = 0
+			Z = 0
+		}
+		DatabaseIndex = 0
+		EnableLimitedMemoryMode = false
+		EntityHeight = 1.6
+		EntityRadius = 0.4
+		ExcludeCustomScriptData = ""
+		FilterOutScriptData = ""
+		FilterOutUnitSubName = ""
+		MinNavigableSurface = 0.5
+		MultilevelsResourceName = "multilevels"
+		MultilevelsSet = [
+		]
+		RasterPrecision = 0.2
+		RegenerateAllNavMeshes = false
+		RenderNavMesh = true
+		RenderNeighborNavMeshes = true
+		SlopeMax = 45
+		StepMax = 0.3
+		TerrainSamplingInMeters = 1
+		UseMultilevels = false
+	}
+}

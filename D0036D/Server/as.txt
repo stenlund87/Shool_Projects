@@ -1,0 +1,4 @@
+g++ -pthread -Wall -std=c++0x main.cpp Messages.h Server.h Server.cpp ThreadHelper.cpp ThreadHelper.h -o server
+
+
+./server

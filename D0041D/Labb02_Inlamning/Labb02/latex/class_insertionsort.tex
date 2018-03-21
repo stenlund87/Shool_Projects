@@ -1,0 +1,126 @@
+\hypertarget{class_insertionsort}{\section{Insertionsort Class Reference}
+\label{class_insertionsort}\index{Insertionsort@{Insertionsort}}
+}
+
+
+{\ttfamily \#include $<$Insertionsort.\-h$>$}
+
+Inheritance diagram for Insertionsort\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_insertionsort}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_insertionsort_a97569135886daffd0baef3fa32277e61}{Insertionsort} (int)
+\begin{DoxyCompactList}\small\item\em Konstruktor för \hyperlink{class_insertionsort}{Insertionsort}. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_insertionsort_a846199ac2771cfe2d3fe8bdc11403feb}{name} ()
+\item 
+void \hyperlink{class_insertionsort_a1601b5003d875bf878ca44a8538138da}{min\-\_\-sort} (int $\ast$\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}, int size)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktionen som vi kallar i funktionen runtime som ligger i randtime klassen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Headerfil till insertionsort för arrayer 
+
+Definition at line 4 of file Insertionsort.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_insertionsort_a97569135886daffd0baef3fa32277e61}{\index{Insertionsort@{Insertionsort}!Insertionsort@{Insertionsort}}
+\index{Insertionsort@{Insertionsort}!Insertionsort@{Insertionsort}}
+\subsubsection[{Insertionsort}]{\setlength{\rightskip}{0pt plus 5cm}Insertionsort\-::\-Insertionsort (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_insertionsort_a97569135886daffd0baef3fa32277e61}
+
+
+Konstruktor för \hyperlink{class_insertionsort}{Insertionsort}. 
+
+konstruktor för insertionsort 
+
+Definition at line 6 of file Insertionsort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr} = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[size];
+    \hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array} = size;
+    \hyperlink{classrandtime_ad5705760c3195b317b2bb3fd93729914}{run\_time}=0;
+    type=unsorted;
+\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_insertionsort_a1601b5003d875bf878ca44a8538138da}{\index{Insertionsort@{Insertionsort}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Insertionsort@{Insertionsort}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Insertionsort\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{arr, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_insertionsort_a1601b5003d875bf878ca44a8538138da}
+
+
+sorteringsfunktionen som vi kallar i funktionen runtime som ligger i randtime klassen 
+
+sorteringsmetoden för insertionsort 
+
+Reimplemented from \hyperlink{classrandtime_af933fcf0a3fbe5cc982c9cdc8a3e3e9d}{randtime}.
+
+
+
+Definition at line 25 of file Insertionsort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} b=0; b<size; b++)                      
+    \{
+        \textcolor{keywordtype}{int} min\_index = b;
+        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} v=b; v<size; v++)
+        \{
+            \textcolor{keywordflow}{if}(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[min\_index]> \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[v])
+            \{
+                min\_index = v;
+            \}
+        \}
+        \textcolor{keywordtype}{int} holder = \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[b];
+        \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[b] =\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[min\_index];
+        \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[min\_index] = holder;
+    \}
+\}
+\end{DoxyCode}
+\hypertarget{class_insertionsort_a846199ac2771cfe2d3fe8bdc11403feb}{\index{Insertionsort@{Insertionsort}!name@{name}}
+\index{name@{name}!Insertionsort@{Insertionsort}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Insertionsort\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_insertionsort_a846199ac2771cfe2d3fe8bdc11403feb}
+funktion för att returnera namn av klass/sorteringmetod 
+
+Reimplemented from \hyperlink{classrandtime_ad2b4e4e33ca4372ff6b6d5843a177b4d}{randtime}.
+
+
+
+Definition at line 15 of file Insertionsort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Insertionsort"};
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Insertionsort.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Insertionsort.\-cpp\end{DoxyCompactItemize}

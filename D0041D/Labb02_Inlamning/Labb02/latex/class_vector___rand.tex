@@ -1,0 +1,370 @@
+\hypertarget{class_vector___rand}{\section{Vector\-\_\-\-Rand Class Reference}
+\label{class_vector___rand}\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}}
+}
+
+
+{\ttfamily \#include $<$Vector\-\_\-\-Rand.\-h$>$}
+
+Inheritance diagram for Vector\-\_\-\-Rand\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_vector___rand}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries sorttype} \{ {\bfseries unsorted}, 
+{\bfseries sorted}, 
+{\bfseries inverted}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vector___rand_a7ab56ad083c5f486283f92a063102151}{Vector\-\_\-\-Rand} (const int \&size)
+\item 
+void \hyperlink{class_vector___rand_afb6b0d2e059207ab7d871eb64ad37a8b}{runtime} ()
+\begin{DoxyCompactList}\small\item\em funktionen som kommer ta tid ochn skriva till textfil \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___rand_af2a4bba5757237262cba7e1f902a164b}{write} (sorttype h)
+\begin{DoxyCompactList}\small\item\em funktoinen som skriver ut till textfil \end{DoxyCompactList}\item 
+int \hyperlink{class_vector___rand_a78a3b5b684a9435d7c34cd16441abc46}{randomnumber} ()
+\begin{DoxyCompactList}\small\item\em funktion som generar ett random nummer från 0 till storleken av vektorn \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}{min\-\_\-sort} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int size)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktionen till vektorna \end{DoxyCompactList}\item 
+virtual std\-::string \hyperlink{class_vector___rand_ac7441ceffc151a910c9741256a80c0d0}{name} ()
+\begin{DoxyCompactList}\small\item\em funktion som används i underklasserna för att få namnet på klassen \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___rand_acdc8618f67557868c5f92a397c4e2d10}{print\-\_\-vector} ()
+\begin{DoxyCompactList}\small\item\em gör cout på elementen i vektorn \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___rand_acbe8ed36807d6c51f9291e1c3c58c464}{fillsort} ()
+\begin{DoxyCompactList}\small\item\em fyller vektorn med element i sorterad ordning \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___rand_a17fb44f48a1bedcda55e071ffd8edfa5}{fillrandom} ()
+\begin{DoxyCompactList}\small\item\em fyller vektorn med random element med max storlek av vektorn storlek \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___rand_a2cdfc6aba7ce7a64450ef4df4dedeb2e}{fillinvert} ()
+\begin{DoxyCompactList}\small\item\em fyller vektorn med element i inverterad ordning \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___rand_a2042ac0b40e5b688eb53d37657ac80a5}{vecdel} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_vector___rand_afdb91e4c790421f38cc2ac47bf2e2517}{sorttype \hyperlink{class_vector___rand_afdb91e4c790421f38cc2ac47bf2e2517}{type}}\label{class_vector___rand_afdb91e4c790421f38cc2ac47bf2e2517}
+
+\begin{DoxyCompactList}\small\item\em variabel till enumeratorn \end{DoxyCompactList}\item 
+\hypertarget{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{std\-::vector$<$ int $>$ $\ast$ \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}}\label{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}
+
+\begin{DoxyCompactList}\small\item\em vektor pekare \end{DoxyCompactList}\item 
+\hypertarget{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{int \hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\-\_\-size}}\label{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}
+
+\begin{DoxyCompactList}\small\item\em variabel för storleken av vekotrn \end{DoxyCompactList}\item 
+\hypertarget{class_vector___rand_a89c3ce062198a34afb4e3d3a5c404990}{std\-::mt19937 \hyperlink{class_vector___rand_a89c3ce062198a34afb4e3d3a5c404990}{mt}}\label{class_vector___rand_a89c3ce062198a34afb4e3d3a5c404990}
+
+\begin{DoxyCompactList}\small\item\em random generatorn \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_vector___rand_a410a79c0e3e90c52d39628e92251f0ca}{double \hyperlink{class_vector___rand_a410a79c0e3e90c52d39628e92251f0ca}{run\-\_\-time}}\label{class_vector___rand_a410a79c0e3e90c52d39628e92251f0ca}
+
+\begin{DoxyCompactList}\small\item\em variable som är tänkt hålla den tiden sorteringen tar \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Headerfil till randtime för vektorer 
+
+Definition at line 7 of file Vector\-\_\-\-Rand.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_vector___rand_a7ab56ad083c5f486283f92a063102151}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}}
+\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{Vector\-\_\-\-Rand}]{\setlength{\rightskip}{0pt plus 5cm}Vector\-\_\-\-Rand\-::\-Vector\-\_\-\-Rand (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_a7ab56ad083c5f486283f92a063102151}
+konstruktor för \hyperlink{class_vector___rand}{Vector\-\_\-\-Rand} 
+
+Definition at line 12 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    std::vector<int>*temp = \textcolor{keyword}{new} std::vector<int>(size,0);
+    \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec} = temp;
+    \hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size} = size;
+    \hyperlink{class_vector___rand_a410a79c0e3e90c52d39628e92251f0ca}{run\_time}=0;
+\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_vector___rand_a2cdfc6aba7ce7a64450ef4df4dedeb2e}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!fillinvert@{fillinvert}}
+\index{fillinvert@{fillinvert}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{fillinvert}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::fillinvert (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_a2cdfc6aba7ce7a64450ef4df4dedeb2e}
+
+
+fyller vektorn med element i inverterad ordning 
+
+Fyller vektorn med tal från size-\/$>$0 
+
+Definition at line 63 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} r=\hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size};
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size}; i++)
+    \{
+        \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(i)=r;
+        r--;
+    \}
+    \hyperlink{class_vector___rand_afdb91e4c790421f38cc2ac47bf2e2517}{type}=inverted;
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_a17fb44f48a1bedcda55e071ffd8edfa5}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!fillrandom@{fillrandom}}
+\index{fillrandom@{fillrandom}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{fillrandom}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::fillrandom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_a17fb44f48a1bedcda55e071ffd8edfa5}
+
+
+fyller vektorn med random element med max storlek av vektorn storlek 
+
+Anropar \hyperlink{class_vector___rand}{Vector\-\_\-\-Rand}'s randomnumber för att få ett slumptal från mt19937 och stoppar in det i vektorn $<$ skapar en seed så att vi får slumpmässiga tal
+
+$<$ seedar mt19937 
+
+Definition at line 47 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} r;
+    \textcolor{keywordtype}{unsigned} beginning = std::chrono::system\_clock::now().time\_since\_epoch().
+      count();  
+    \hyperlink{class_vector___rand_a89c3ce062198a34afb4e3d3a5c404990}{mt}.seed(beginning);                                                               
+         
+
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size}; i++)
+    \{
+        r=\hyperlink{class_vector___rand_a78a3b5b684a9435d7c34cd16441abc46}{randomnumber}();                                                   
+        \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(i)=r;
+    \}
+    \hyperlink{class_vector___rand_afdb91e4c790421f38cc2ac47bf2e2517}{type}=unsorted;
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_acbe8ed36807d6c51f9291e1c3c58c464}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!fillsort@{fillsort}}
+\index{fillsort@{fillsort}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{fillsort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::fillsort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_acbe8ed36807d6c51f9291e1c3c58c464}
+
+
+fyller vektorn med element i sorterad ordning 
+
+Fyller vektorn med sorterade tal från 0-\/$>$sizen 
+
+Definition at line 36 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} r=0;
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size}; i++)
+    \{
+        \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(i)=r;
+        r++;
+    \}
+    \hyperlink{class_vector___rand_afdb91e4c790421f38cc2ac47bf2e2517}{type}=sorted;
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}
+
+
+sorteringsfunktionen till vektorna 
+
+Virtuel funktion som inte behövs i \hyperlink{class_vector___rand}{Vector\-\_\-\-Rand} 
+
+Reimplemented in \hyperlink{class_vector___quick_a635c45dfe5d7115307f48c83e42515e7}{Vector\-\_\-\-Quick}, \hyperlink{class_vector___bucket_aed11c6dc4386f8f0cf63f73dfc565890}{Vector\-\_\-\-Bucket}, \hyperlink{class_vector___heap_a83a71b00575fa823798398249d6ef6d7}{Vector\-\_\-\-Heap}, and \hyperlink{class_vector___insertion_a7eb7137f0e2f163efea6ae9533194dfa}{Vector\-\_\-\-Insertion}.
+
+
+
+Definition at line 116 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_ac7441ceffc151a910c9741256a80c0d0}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!name@{name}}
+\index{name@{name}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Vector\-\_\-\-Rand\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___rand_ac7441ceffc151a910c9741256a80c0d0}
+
+
+funktion som används i underklasserna för att få namnet på klassen 
+
+Returnerar namnet på klassen 
+
+Reimplemented in \hyperlink{class_vector___quick_a629cd27360991dd6046acc98eb1bc563}{Vector\-\_\-\-Quick}, \hyperlink{class_vector___bucket_a81cd0b925dd282067471b03ad8edf03e}{Vector\-\_\-\-Bucket}, \hyperlink{class_vector___heap_ae669350ff819aa574e4834fc1d1ee78e}{Vector\-\_\-\-Heap}, and \hyperlink{class_vector___insertion_afe4a165dfd1c51c628f2157f34bacdea}{Vector\-\_\-\-Insertion}.
+
+
+
+Definition at line 30 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Vector\_Rand"};
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_acdc8618f67557868c5f92a397c4e2d10}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!print\-\_\-vector@{print\-\_\-vector}}
+\index{print\-\_\-vector@{print\-\_\-vector}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{print\-\_\-vector}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::print\-\_\-vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_acdc8618f67557868c5f92a397c4e2d10}
+
+
+gör cout på elementen i vektorn 
+
+Metod som skriver ut hela vektorn 
+
+Definition at line 121 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->begin(); i != \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->end(); ++i)
+        std::cout << *i << std::endl;
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_a78a3b5b684a9435d7c34cd16441abc46}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!randomnumber@{randomnumber}}
+\index{randomnumber@{randomnumber}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{randomnumber}]{\setlength{\rightskip}{0pt plus 5cm}int Vector\-\_\-\-Rand\-::randomnumber (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_a78a3b5b684a9435d7c34cd16441abc46}
+
+
+funktion som generar ett random nummer från 0 till storleken av vektorn 
+
+Returnerar ett slumptal 
+
+Definition at line 109 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{   
+    std::uniform\_int\_distribution<int> dist(0,\hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size});
+    \textcolor{keywordflow}{return} dist(\hyperlink{class_vector___rand_a89c3ce062198a34afb4e3d3a5c404990}{mt});
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_afb6b0d2e059207ab7d871eb64ad37a8b}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!runtime@{runtime}}
+\index{runtime@{runtime}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{runtime}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::runtime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_afb6b0d2e059207ab7d871eb64ad37a8b}
+
+
+funktionen som kommer ta tid ochn skriva till textfil 
+
+Skapar två timestamps och räknar ut hur lång tid sorteringen tog och anropar write 
+
+Definition at line 75 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    sorttype holder;
+    holder= this->\hyperlink{class_vector___rand_afdb91e4c790421f38cc2ac47bf2e2517}{type};
+    \textcolor{keyword}{using namespace }std::chrono;
+
+    time\_point<steady\_clock>;
+    steady\_clock::time\_point t0 = steady\_clock::now();
+    \hyperlink{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}{min\_sort}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec},this->\hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size});
+    steady\_clock::time\_point t1 = steady\_clock::now();
+    duration<double> time\_span = duration\_cast<duration<double>>(t1 - t0);
+    \hyperlink{class_vector___rand_a410a79c0e3e90c52d39628e92251f0ca}{run\_time} = time\_span.count();
+    \hyperlink{class_vector___rand_af2a4bba5757237262cba7e1f902a164b}{write}(holder);
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_a2042ac0b40e5b688eb53d37657ac80a5}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!vecdel@{vecdel}}
+\index{vecdel@{vecdel}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{vecdel}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::vecdel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_a2042ac0b40e5b688eb53d37657ac80a5}
+Av-\/allokerar minnet som vec pekar på och sätter vec till nullptr 
+
+Definition at line 128 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keyword}{delete} \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec};
+    \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}=\textcolor{keyword}{nullptr};
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___rand_af2a4bba5757237262cba7e1f902a164b}{\index{Vector\-\_\-\-Rand@{Vector\-\_\-\-Rand}!write@{write}}
+\index{write@{write}!Vector_Rand@{Vector\-\_\-\-Rand}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Rand\-::write (
+\begin{DoxyParamCaption}
+\item[{sorttype}]{h}
+\end{DoxyParamCaption}
+)}}\label{class_vector___rand_af2a4bba5757237262cba7e1f902a164b}
+
+
+funktoinen som skriver ut till textfil 
+
+Går till slutet av test.\-txt och skriver ner vilken sorteringsalgoritm som användes, storleken, tiden det tog att sortera och hur vektorn såg ut innan körning 
+
+Definition at line 91 of file Vector\-\_\-\-Rand.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    std::fstream myfile;
+    myfile.open(\textcolor{stringliteral}{"test.txt"},std::ios::app);
+    myfile << \hyperlink{class_vector___rand_ac7441ceffc151a910c9741256a80c0d0}{name}() << std::endl;
+    myfile << \hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size} << std::endl;
+    myfile << \hyperlink{class_vector___rand_a410a79c0e3e90c52d39628e92251f0ca}{run\_time} << \textcolor{stringliteral}{" seconds"} << std::endl;
+
+    \textcolor{keywordflow}{if}(h == unsorted) myfile << \textcolor{stringliteral}{"random"} << std::endl;
+    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(h == sorted) myfile << \textcolor{stringliteral}{"Sorted"} << std::endl;
+    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (h == inverted) myfile << \textcolor{stringliteral}{"Inverted"} << std::endl;
+    myfile << \textcolor{stringliteral}{"-----------------------------------------"} << std::endl;
+
+    myfile << \textcolor{stringliteral}{"\(\backslash\)n"};
+    myfile.close();
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Rand.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Rand.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,122 @@
+\hypertarget{class_vector___quick}{\section{Vector\-\_\-\-Quick Class Reference}
+\label{class_vector___quick}\index{Vector\-\_\-\-Quick@{Vector\-\_\-\-Quick}}
+}
+
+
+{\ttfamily \#include $<$Vector\-\_\-\-Quick.\-h$>$}
+
+Inheritance diagram for Vector\-\_\-\-Quick\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_vector___quick}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_vector___quick_a85fa58b76e21c2999ca911f4468279b7}{\hyperlink{class_vector___quick_a85fa58b76e21c2999ca911f4468279b7}{Vector\-\_\-\-Quick} (int size)}\label{class_vector___quick_a85fa58b76e21c2999ca911f4468279b7}
+
+\begin{DoxyCompactList}\small\item\em konstruktor för \hyperlink{class_vector___quick}{Vector\-\_\-\-Quick} \end{DoxyCompactList}\item 
+\hypertarget{class_vector___quick_a629cd27360991dd6046acc98eb1bc563}{std\-::string \hyperlink{class_vector___quick_a629cd27360991dd6046acc98eb1bc563}{name} ()}\label{class_vector___quick_a629cd27360991dd6046acc98eb1bc563}
+
+\begin{DoxyCompactList}\small\item\em funktion som returnerar namn på klassen \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___quick_a2249af93e45ee9a106a53d7ab3bb9e19}{min\-\_\-sort} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int left, int size)
+\begin{DoxyCompactList}\small\item\em sorterings metoden som kallas i min\-\_\-sort för Vector\-\_\-\-Quicksort \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___quick_a635c45dfe5d7115307f48c83e42515e7}{min\-\_\-sort} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int size)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktionen som vi kallar i funktionen runtime som ligger i randtime klassen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Headerfil till \hyperlink{class_vector___quick}{Vector\-\_\-\-Quick} för vektorer 
+
+Definition at line 5 of file Vector\-\_\-\-Quick.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_vector___quick_a2249af93e45ee9a106a53d7ab3bb9e19}{\index{Vector\-\_\-\-Quick@{Vector\-\_\-\-Quick}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Vector_Quick@{Vector\-\_\-\-Quick}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Quick\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{left, }
+\item[{int}]{right}
+\end{DoxyParamCaption}
+)}}\label{class_vector___quick_a2249af93e45ee9a106a53d7ab3bb9e19}
+
+
+sorterings metoden som kallas i min\-\_\-sort för Vector\-\_\-\-Quicksort 
+
+sorteringmetoden för quicksort med vektorer $<$ Swap 
+
+Definition at line 17 of file Vector\-\_\-\-Quick.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} pivot = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at((left + right)/2);
+    \textcolor{keywordtype}{int} l = left;
+    \textcolor{keywordtype}{int} r = right;
+    \textcolor{keywordflow}{while}(l <= r)
+    \{
+        \textcolor{keywordflow}{while} (\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(l) < pivot)
+        \{
+            l++;        
+        \}
+        \textcolor{keywordflow}{while}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(r) > pivot)
+        \{
+            r--;
+        \}
+        \textcolor{keywordflow}{if}(l <= r)                      
+        \{
+            \textcolor{keywordtype}{int} temp = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(l);
+            \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(l) = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(r);
+            \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(r) = temp;
+            l++;
+            r--;
+        \}
+    \}
+
+    \textcolor{keywordflow}{if}(left < r)
+    \{
+        \hyperlink{class_vector___quick_a2249af93e45ee9a106a53d7ab3bb9e19}{min\_sort}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, left, r);
+    \}
+    \textcolor{keywordflow}{if}(l < right)
+    \{
+        \hyperlink{class_vector___quick_a2249af93e45ee9a106a53d7ab3bb9e19}{min\_sort}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, l, right);
+    \}
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___quick_a635c45dfe5d7115307f48c83e42515e7}{\index{Vector\-\_\-\-Quick@{Vector\-\_\-\-Quick}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Vector_Quick@{Vector\-\_\-\-Quick}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Quick\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___quick_a635c45dfe5d7115307f48c83e42515e7}
+
+
+sorteringsfunktionen som vi kallar i funktionen runtime som ligger i randtime klassen 
+
+funktionen som kallas från runtime 
+
+Reimplemented from \hyperlink{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}{Vector\-\_\-\-Rand}.
+
+
+
+Definition at line 53 of file Vector\-\_\-\-Quick.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \hyperlink{class_vector___quick_a2249af93e45ee9a106a53d7ab3bb9e19}{min\_sort}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec},0,size-1);
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Quick.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Quick.\-cpp\end{DoxyCompactItemize}

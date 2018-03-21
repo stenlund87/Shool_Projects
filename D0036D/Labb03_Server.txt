@@ -1,0 +1,138 @@
+package server;
+
+
+import java.net.Socket;
+import java.net.ServerSocket;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+
+public class Server
+{
+	
+	public ServerSocket serverSocket;
+	public Socket clientSocket;
+
+	
+	DataOutputStream out;
+	DataInputStream in;
+	protected Users[] users;
+	
+	
+	public static void main(String[] args) throws IOException
+	{
+			Users[] users = new Users[10];
+			System.out.println("Starting Server..");
+			
+			
+			ServerSocket serverSocket = new ServerSocket(7777);
+			System.out.println("Server Started...");
+			
+			while(true)
+			{
+				Socket clientSocket = serverSocket.accept();
+				System.out.println("Accepted");
+				DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
+				DataInputStream in = new DataInputStream(clientSocket.getInputStream());
+				for(int i=0; i<10; i++)
+				{
+					if(users[i] == null)
+					{
+						System.out.println("Connection from: "+ clientSocket.getInetAddress());
+						
+						out.writeUTF("This is a test of Java Sockets");
+						System.out.println("Data has been sent");
+						in = new DataInputStream(clientSocket.getInputStream());
+						String test = in.readUTF();
+						System.out.println(test);
+						out.writeInt(i);
+						
+						out = new DataOutputStream(clientSocket.getOutputStream());
+						out.writeUTF("Your connection has been accepted!");
+						
+//						out.writeInt(99);
+						out.writeUTF(i+":"+0+":"+0);
+						System.out.println(i);
+						users[i] = new Users(out,in,users, i);		
+						break;
+					}
+
+				}	
+			}
+	}
+
+
+
+
+}
+
+
+class Users implements Runnable
+{
+	DataInputStream in;
+	DataOutputStream out;
+	Users[] users = new Users[10];
+	
+	int playerID;
+	int userX;
+	int userY;
+
+	
+	public Users(DataOutputStream out, DataInputStream in, Users[] users, int playerID)
+	{
+		this.out = out;
+		this.in = in;
+		this.users = users;
+		this.playerID = playerID;
+		
+		userX = 0;
+		userY = 0;
+		
+		Thread tred = new Thread(this);
+		tred.start();
+	}
+
+	public void run() 
+	{
+		while(true)
+		{
+			try 
+			{
+				String data = in.readUTF();
+				System.out.println("Detta är data som kommer "+data);
+				String[] playerData = data.split(":");
+				int id = Integer.parseInt(playerData[0]);
+				int x = Integer.parseInt(playerData[1]);
+				int y = Integer.parseInt(playerData[2]);
+				for(int i = 0; i<10; i++)
+				{
+					if(users[i]!= null)
+					{		
+						String update = id+":"+":"+x+":"+y;
+						out.writeUTF(update);
+						//System.out.println("Hejsan hoppsan");
+//						out.writeUTF(data);
+					}
+					if(users.length == 1)
+					{
+						break;
+					}
+				}
+			} 
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+
+		}
+	}
+	
+}
+
+
+
+
+
+

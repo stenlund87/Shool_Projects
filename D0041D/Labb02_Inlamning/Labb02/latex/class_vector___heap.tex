@@ -1,0 +1,189 @@
+\hypertarget{class_vector___heap}{\section{Vector\-\_\-\-Heap Class Reference}
+\label{class_vector___heap}\index{Vector\-\_\-\-Heap@{Vector\-\_\-\-Heap}}
+}
+
+
+{\ttfamily \#include $<$Vector\-\_\-\-Heap.\-h$>$}
+
+Inheritance diagram for Vector\-\_\-\-Heap\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_vector___heap}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_vector___heap_afca0d266ffe750b480e82a5d577a544f}{\hyperlink{class_vector___heap_afca0d266ffe750b480e82a5d577a544f}{Vector\-\_\-\-Heap} (int)}\label{class_vector___heap_afca0d266ffe750b480e82a5d577a544f}
+
+\begin{DoxyCompactList}\small\item\em konstruktor för \hyperlink{class_vector___heap}{Vector\-\_\-\-Heap} \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_vector___heap_ae669350ff819aa574e4834fc1d1ee78e}{name} ()
+\begin{DoxyCompactList}\small\item\em funktion som returnerar namn på klassen \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___heap_a83a71b00575fa823798398249d6ef6d7}{min\-\_\-sort} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktion \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___heap_a506074eb0381712d85091c494fdf403c}{swaps} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int, int)
+\begin{DoxyCompactList}\small\item\em heapify \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___heap_a75ec571185b2fe92665ef017653f6e85}{heapsort} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int)
+\item 
+void \hyperlink{class_vector___heap_a8c5ba805ec812b4f702fb96f0c65c1d0}{build\-\_\-heap} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int)
+\begin{DoxyCompactList}\small\item\em funktion som bygger upp heap \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Headerfil till \hyperlink{class_vector___heap}{Vector\-\_\-\-Heap} för vektorer 
+
+Definition at line 4 of file Vector\-\_\-\-Heap.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_vector___heap_a8c5ba805ec812b4f702fb96f0c65c1d0}{\index{Vector\-\_\-\-Heap@{Vector\-\_\-\-Heap}!build\-\_\-heap@{build\-\_\-heap}}
+\index{build\-\_\-heap@{build\-\_\-heap}!Vector_Heap@{Vector\-\_\-\-Heap}}
+\subsubsection[{build\-\_\-heap}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Heap\-::build\-\_\-heap (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_vector___heap_a8c5ba805ec812b4f702fb96f0c65c1d0}
+
+
+funktion som bygger upp heap 
+
+bygger en heap 
+
+Definition at line 68 of file Vector\-\_\-\-Heap.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = (n-1)/2; i >= 0; i--)
+    \{
+        \hyperlink{class_vector___heap_a506074eb0381712d85091c494fdf403c}{swaps}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, i, n);
+    \}
+\}\end{DoxyCode}
+\hypertarget{class_vector___heap_a75ec571185b2fe92665ef017653f6e85}{\index{Vector\-\_\-\-Heap@{Vector\-\_\-\-Heap}!heapsort@{heapsort}}
+\index{heapsort@{heapsort}!Vector_Heap@{Vector\-\_\-\-Heap}}
+\subsubsection[{heapsort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Heap\-::heapsort (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_vector___heap_a75ec571185b2fe92665ef017653f6e85}
+själva sorteringsunktionen 
+
+Definition at line 57 of file Vector\-\_\-\-Heap.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} temp;
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = size-1; i >= 1; i--)
+    \{
+        std::swap(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(0),\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(i));
+        \hyperlink{class_vector___heap_a506074eb0381712d85091c494fdf403c}{swaps}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, 0, i - 1);
+    \}
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___heap_a83a71b00575fa823798398249d6ef6d7}{\index{Vector\-\_\-\-Heap@{Vector\-\_\-\-Heap}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Vector_Heap@{Vector\-\_\-\-Heap}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Heap\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___heap_a83a71b00575fa823798398249d6ef6d7}
+
+
+sorteringsfunktion 
+
+sorteringsfunktionen som kallas från runtime 
+
+Reimplemented from \hyperlink{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}{Vector\-\_\-\-Rand}.
+
+
+
+Definition at line 17 of file Vector\-\_\-\-Heap.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \hyperlink{class_vector___heap_a8c5ba805ec812b4f702fb96f0c65c1d0}{build\_heap}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, size);
+    \hyperlink{class_vector___heap_a75ec571185b2fe92665ef017653f6e85}{heapsort}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec},size);
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___heap_ae669350ff819aa574e4834fc1d1ee78e}{\index{Vector\-\_\-\-Heap@{Vector\-\_\-\-Heap}!name@{name}}
+\index{name@{name}!Vector_Heap@{Vector\-\_\-\-Heap}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Vector\-\_\-\-Heap\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___heap_ae669350ff819aa574e4834fc1d1ee78e}
+
+
+funktion som returnerar namn på klassen 
+
+funktion som returnerar namn på soreteringmetod/klass 
+
+Reimplemented from \hyperlink{class_vector___rand_ac7441ceffc151a910c9741256a80c0d0}{Vector\-\_\-\-Rand}.
+
+
+
+Definition at line 24 of file Vector\-\_\-\-Heap.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Vector\_Heap"};
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___heap_a506074eb0381712d85091c494fdf403c}{\index{Vector\-\_\-\-Heap@{Vector\-\_\-\-Heap}!swaps@{swaps}}
+\index{swaps@{swaps}!Vector_Heap@{Vector\-\_\-\-Heap}}
+\subsubsection[{swaps}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Heap\-::swaps (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{i, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_vector___heap_a506074eb0381712d85091c494fdf403c}
+
+
+heapify 
+
+heapify funktion 
+
+Definition at line 30 of file Vector\-\_\-\-Heap.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} j, temp;
+    temp = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(i);
+    j = 2*i;
+
+    \textcolor{keywordflow}{while} (j < size)
+    \{
+        \textcolor{keywordflow}{if} ( j== size-1 && size >1) 
+            \textcolor{keywordflow}{goto} ref;
+        
+        \textcolor{keywordflow}{if} (j < size && vec->at(j+1) > \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(j))
+            j = j+1;
+            
+        ref:
+        \textcolor{keywordflow}{if} (temp >= \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(j))
+            \textcolor{keywordflow}{break};
+        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (temp < vec->at(j))
+        \{
+            \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(j/2) = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(j);
+            j = 2*j;
+        \}
+    \}
+    \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(j/2) = temp;
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Heap.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Heap.\-cpp\end{DoxyCompactItemize}

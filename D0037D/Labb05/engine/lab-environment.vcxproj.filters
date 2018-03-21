@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{3b40fd69-0516-4833-815a-22ec9d3905aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{fc1af37e-99c3-41dd-93b0-33ef924c763c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2d">
+      <UniqueIdentifier>{8d6c947c-f825-415f-a30b-fa95d2c15df1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="config.cc">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\app.cc">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="render\window.cc">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="2d\2dapp.cc">
+      <Filter>2d</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\app.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="render\window.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="2d\2dapp.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

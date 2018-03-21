@@ -1,0 +1,104 @@
+\hypertarget{class_vector___insertion}{\section{Vector\-\_\-\-Insertion Class Reference}
+\label{class_vector___insertion}\index{Vector\-\_\-\-Insertion@{Vector\-\_\-\-Insertion}}
+}
+
+
+{\ttfamily \#include $<$Vector\-\_\-\-Insertion.\-h$>$}
+
+Inheritance diagram for Vector\-\_\-\-Insertion\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_vector___insertion}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_vector___insertion_a55f80780211bc7895856fa7281dac266}{\hyperlink{class_vector___insertion_a55f80780211bc7895856fa7281dac266}{Vector\-\_\-\-Insertion} (int)}\label{class_vector___insertion_a55f80780211bc7895856fa7281dac266}
+
+\begin{DoxyCompactList}\small\item\em konstruktor för \hyperlink{class_vector___insertion}{Vector\-\_\-\-Insertion} \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_vector___insertion_afe4a165dfd1c51c628f2157f34bacdea}{name} ()
+\begin{DoxyCompactList}\small\item\em funktion som returnerar namn på klassen \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___insertion_a7eb7137f0e2f163efea6ae9533194dfa}{min\-\_\-sort} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int size)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktion \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Headerfil till \hyperlink{class_vector___insertion}{Vector\-\_\-\-Insertion} för vektorer 
+
+Definition at line 4 of file Vector\-\_\-\-Insertion.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_vector___insertion_a7eb7137f0e2f163efea6ae9533194dfa}{\index{Vector\-\_\-\-Insertion@{Vector\-\_\-\-Insertion}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Vector_Insertion@{Vector\-\_\-\-Insertion}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Insertion\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___insertion_a7eb7137f0e2f163efea6ae9533194dfa}
+
+
+sorteringsfunktion 
+
+sorteringsmetod för insertionsort med vektorer som input $<$Härifrån och ner = swap 
+
+Reimplemented from \hyperlink{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}{Vector\-\_\-\-Rand}.
+
+
+
+Definition at line 25 of file Vector\-\_\-\-Insertion.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} b=0; b<size; b++)
+    \{
+        \textcolor{keywordtype}{int} min\_index = b;
+        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} v=b; v<size; v++)
+        \{
+            \textcolor{keywordflow}{if}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(min\_index) > \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(v))
+            \{
+                min\_index = v;
+            \}
+        \}
+        \textcolor{keywordtype}{int} holder = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(b);         
+        \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(b) = \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(min\_index);
+        \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(min\_index) = holder;
+    \}
+\}
+\end{DoxyCode}
+\hypertarget{class_vector___insertion_afe4a165dfd1c51c628f2157f34bacdea}{\index{Vector\-\_\-\-Insertion@{Vector\-\_\-\-Insertion}!name@{name}}
+\index{name@{name}!Vector_Insertion@{Vector\-\_\-\-Insertion}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Vector\-\_\-\-Insertion\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___insertion_afe4a165dfd1c51c628f2157f34bacdea}
+
+
+funktion som returnerar namn på klassen 
+
+funktion för att returnera namn på sorteringsfunktion/klass 
+
+Reimplemented from \hyperlink{class_vector___rand_ac7441ceffc151a910c9741256a80c0d0}{Vector\-\_\-\-Rand}.
+
+
+
+Definition at line 15 of file Vector\-\_\-\-Insertion.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Vector\_Insertion"};
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Insertion.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Insertion.\-cpp\end{DoxyCompactItemize}

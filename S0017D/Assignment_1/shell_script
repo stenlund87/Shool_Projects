@@ -1,0 +1,35 @@
+#!/bin/bash
+clear
+value=$(<copyright.txt)
+
+#Search for all .h files in current directory and subdirectories and change them to .hpp
+for f in $(find . -name \*.h); do
+mv -- "$f" "${f%.h}.hpp"
+done
+
+#Search for all .cpp files in current directory and subdirectories and change them to .cc
+for f in $(find . -name \*.cpp); do
+mv -- "$f" "${f%.cpp}.cc"
+done
+
+#Insert the text inside copyright.txt for each file with .cc extension. Subdirectories included!
+#But first we create a temp file and insert the content inside copyright.txt and then the content inside the .hpp file to temp
+#Then we replace the .cc file with the content of temp
+for f in $(find . -name \*.cc); do
+echo $value | cat - $f > temp && mv temp $f
+done
+
+
+#Insert the text inside copyright.txt for each file with .hpp extension. Subdirectories included!
+#But first we create a temp file and insert the content inside copyright.txt and then the content inside the .hpp file to temp
+#Then we replace the .hpp file with the content of temp
+for f in $(find . -name \*.hpp); do
+echo $value | cat - $f > temp && mv temp $f
+done
+
+
+
+#Then we replace all floats with doubles
+sed -i 's/float/double/g' $(find . -name \*.hpp -o -name \*.cc)
+
+

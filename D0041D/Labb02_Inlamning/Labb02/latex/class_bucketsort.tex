@@ -1,0 +1,130 @@
+\hypertarget{class_bucketsort}{\section{Bucketsort Class Reference}
+\label{class_bucketsort}\index{Bucketsort@{Bucketsort}}
+}
+
+
+{\ttfamily \#include $<$Bucketsort.\-h$>$}
+
+Inheritance diagram for Bucketsort\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bucketsort}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bucketsort_aa11839ce17dfcb620a4980344c04a03a}{Bucketsort} (int)
+\begin{DoxyCompactList}\small\item\em Konstruktor för \hyperlink{class_bucketsort}{Bucketsort}. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_bucketsort_ac14e42957393679bc33d4571809b7d93}{name} ()
+\begin{DoxyCompactList}\small\item\em Metod för att returnera namnet på \hyperlink{class_bucketsort}{Bucketsort}. \end{DoxyCompactList}\item 
+void \hyperlink{class_bucketsort_a9bd618e32f232a3a6a4b1137ac78859a}{min\-\_\-sort} (int $\ast$\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}, int size)
+\begin{DoxyCompactList}\small\item\em Sortertingsfunktionen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Headerfil till bucketsort för arrayer 
+
+Definition at line 4 of file Bucketsort.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_bucketsort_aa11839ce17dfcb620a4980344c04a03a}{\index{Bucketsort@{Bucketsort}!Bucketsort@{Bucketsort}}
+\index{Bucketsort@{Bucketsort}!Bucketsort@{Bucketsort}}
+\subsubsection[{Bucketsort}]{\setlength{\rightskip}{0pt plus 5cm}Bucketsort\-::\-Bucketsort (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_bucketsort_aa11839ce17dfcb620a4980344c04a03a}
+
+
+Konstruktor för \hyperlink{class_bucketsort}{Bucketsort}. 
+
+konstruktor för bucketsort 
+
+Definition at line 7 of file Bucketsort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr} = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[size];
+    \hyperlink{classrandtime_a67a2bdfacf59e7ffe00caf43910c6330}{size\_array} = size;
+    \hyperlink{classrandtime_ad5705760c3195b317b2bb3fd93729914}{run\_time}=0;
+\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bucketsort_a9bd618e32f232a3a6a4b1137ac78859a}{\index{Bucketsort@{Bucketsort}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Bucketsort@{Bucketsort}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Bucketsort\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{arr, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_bucketsort_a9bd618e32f232a3a6a4b1137ac78859a}
+
+
+Sortertingsfunktionen. 
+
+sorteringmetoden för bcuketsort $<$ vektorer med vektorer i sig för att agera buckets
+
+$<$ Fixar ett index till bucketen talet i arr kommer att hamna i
+
+$<$ push\-\_\-back in i i vektorerna som agerar hink 
+
+Reimplemented from \hyperlink{classrandtime_af933fcf0a3fbe5cc982c9cdc8a3e3e9d}{randtime}.
+
+
+
+Definition at line 25 of file Bucketsort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} n = ceil(\textcolor{keywordtype}{float}(size/10.0));
+    std::vector<std::vector<int>> b(n+1);                           
+
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<size;i++)
+    \{
+        \textcolor{keywordtype}{int} ind=floor(\textcolor{keywordtype}{float}(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[i]/10));                         
+        b[ind].push\_back(\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[i]);                                    
+    \}
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<n;i++)\{sort(b[i].begin(),b[i].end());\}            
+    \textcolor{keywordtype}{int} ind=0,i,j;
+    \textcolor{keywordflow}{for}(i=0;i<n;i++)                                                
+    \textcolor{keywordflow}{for}(j=0;j<b[i].size();j++)\{\hyperlink{classrandtime_a4dac03ec063a522b314b68795a787d36}{arr}[ind++]=b[i][j];\}
+\}\end{DoxyCode}
+\hypertarget{class_bucketsort_ac14e42957393679bc33d4571809b7d93}{\index{Bucketsort@{Bucketsort}!name@{name}}
+\index{name@{name}!Bucketsort@{Bucketsort}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Bucketsort\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_bucketsort_ac14e42957393679bc33d4571809b7d93}
+
+
+Metod för att returnera namnet på \hyperlink{class_bucketsort}{Bucketsort}. 
+
+funktion för att få namn av sorteringmetod/klass 
+
+Reimplemented from \hyperlink{classrandtime_ad2b4e4e33ca4372ff6b6d5843a177b4d}{randtime}.
+
+
+
+Definition at line 15 of file Bucketsort.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Bucketsort"};
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Bucketsort.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Bucketsort.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Cleaning up previous build of bigger_pluginw64_dev
+  plugin.cpp
+     Creating library D:\Skolarbete\GD15\ponste-5\S0012D_Spelmotor\stingray_sdk\stingray-plugin-api-samples\samples\bigger_plugin\build\vc14\win64\../../../build/vc14/win64/Dev/bigger_pluginw64_dev.lib and object D:\Skolarbete\GD15\ponste-5\S0012D_Spelmotor\stingray_sdk\stingray-plugin-api-samples\samples\bigger_plugin\build\vc14\win64\../../../build/vc14/win64/Dev/bigger_pluginw64_dev.exp
+  bigger_plugin.vcxproj -> D:\Skolarbete\GD15\ponste-5\S0012D_Spelmotor\stingray_sdk\stingray-plugin-api-samples\samples\bigger_plugin\build\vc14\win64\..\..\..\..\..\..\..\stingray\build\binaries\engine\win64\dev\plugins\bigger_pluginw64_dev.dll

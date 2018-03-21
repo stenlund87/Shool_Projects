@@ -1,0 +1,6 @@
+Project migration to XML Schema (XSD) version 70 is completed.
+Project migration to XML Schema (XSD) version 71 is completed.
+Project migration to XML Schema (XSD) version 72 is completed.
+The default work unit '\Audio Devices\Default Work Unit' is missing.  It has been created. If your project is under source control, remember to add this file.
+Some new object properties have been added or obsolete properties deleted. The project file was updated. These changes will not have an impact on your project.
+Properties related to Platform(s) "'3DS, Linux, Mac, PS3, VitaHW, VitaSW, Wii, WiiUSW, WindowsPhone, Xbox360'" were detected and removed from project as they were unreferenced. This could happen if you migrated a project from a previous version where some platforms were disabled. Disabled platforms are unavailable as they are being replaced by custom platforms. If you wanted to keep information relative to disabled platforms, enable them before performing migration.

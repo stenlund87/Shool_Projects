@@ -1,0 +1,301 @@
+package server;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+
+class IPSender implements Runnable
+{	
+	Thread thread;
+	String tempo = "";
+	public MulticastSocket socket;
+	
+	public IPSender()
+	{
+		thread = new Thread(this);
+		thread.start();
+	}
+	
+	
+	@Override
+	public void run()
+	{
+		try 
+		{
+			String port = "7777";
+			InetAddress serverIP = InetAddress.getLocalHost();
+			String ip = serverIP.toString();
+			System.out.println(ip);
+			String[] iplist = ip.split("/");
+			byte[] bytePackage = new byte[500];
+			DatagramPacket holder = new DatagramPacket(bytePackage, bytePackage.length);
+			InetAddress group = InetAddress.getByName("239.255.255.250");
+			socket = new MulticastSocket(1900);
+			socket.joinGroup(group);
+			String check = "";
+			while(true)
+			{
+				
+				byte[] bp = new byte[500];
+				DatagramPacket data = new DatagramPacket(bp, bp.length);		
+				socket.receive(data);
+				String temp = new String(data.getData(),0,data.getLength());
+				check = new String(holder.getData(),0,holder.getLength());
+				if (temp.equals(check))
+				{
+					continue;
+				}
+				String[] templist = temp.split(" ");
+				if (templist[0].equals("SERVICE") && templist[1].equals("QUERY") && templist[2].equals("JavaGameServer"))
+				{
+					tempo = "SERVICE REPLY JavaGameServer BattleOfCanons " + iplist[1] + " " + port; 
+					DatagramPacket pack = new DatagramPacket(tempo.getBytes(),tempo.length());
+					pack.setAddress(group);
+					pack.setPort(1900);
+					socket.send(pack);
+					holder = pack;
+				}
+			}
+		} 
+		catch (IOException e ) 
+		{
+			e.printStackTrace();
+		}
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package server;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.Socket;
+
+class Player implements Runnable
+{
+	public int xPos;
+	public int yPos;
+	
+	public int deltaX;
+	public int deltaY;
+	
+	public int ID;
+	private	DataInputStream in;
+	private DataOutputStream out;
+	private DatagramSocket playerDatagramSocket;
+	private Socket socket;
+	private Thread playerThread;
+	Server server;
+	
+	public Player(int clientID, Socket socket, DatagramSocket datagramSocket, Server server)
+	{
+		ID = clientID;
+		this.socket = socket;
+		this.server = server;
+		playerDatagramSocket = datagramSocket;
+		
+		playerThread = new Thread(this);
+		playerThread.start();
+	}	
+
+
+	@Override
+	public void run() 
+	{
+		try
+		{
+			in = new DataInputStream(socket.getInputStream());
+			out = new DataOutputStream(socket.getOutputStream());
+			while(true)
+			{
+				String inData = in.readUTF();
+				String[] holder = inData.split(":");
+				if (holder[0].equals("Connect")) 
+				{
+					System.out.println("New player joined the game");
+					xPos = 10;
+					yPos = 10;
+					out.writeUTF("NewPlayer:" + ID+":"+ xPos + ":" + yPos +":");
+					
+					for(int i = 0; i< server.playerList.size(); i++)
+					{
+						Thread.sleep(10);
+						String dataString;
+						dataString = server.playerList.get(i).ID + ":" + server.playerList.get(i).xPos + ":" + server.playerList.get(i).yPos + ":";
+						DatagramPacket dataPackage = new DatagramPacket(dataString.getBytes(), dataString.length());
+						dataPackage.setAddress(InetAddress.getByName("229.15.15.15"));
+						dataPackage.setPort(7778);
+						playerDatagramSocket.send(dataPackage);
+						System.out.println("Sending players");
+					}
+				}
+				else 
+				{
+					if (holder[1].equals("Move"))
+					{
+						if(ID == Integer.parseInt(holder[0]))
+						{
+							if(holder[2].equals("Up"))
+							{
+								deltaY = -10;
+							}
+							else if(holder[2].equals("Down"))
+							{
+								deltaY = 10;
+							}
+							else if(holder[2].equals("Left"))
+							{
+								deltaX = -10;
+							}
+							else if(holder[2].equals("Right"))
+							{
+								deltaX = 10;
+							}
+						}
+					}
+					else if (holder[1].equals("Stop"))
+					{
+
+						if(ID == Integer.parseInt(holder[0]))
+						{
+							deltaY = 0;
+							deltaX = 0;
+						}
+					}
+					else if(holder[1].equals("Leave"))
+					{
+						System.out.println("Client wants to exit!");
+						String data = ID + ":Leave:Game:";
+						DatagramPacket dataPackage = new DatagramPacket(data.getBytes(), data.length());
+						dataPackage.setAddress(InetAddress.getByName("229.15.15.15"));
+						dataPackage.setPort(7778);
+						playerDatagramSocket.send(dataPackage);
+						server.RemovePlayer(ID);
+						playerThread.join();
+						return;
+					}
+				}
+				server.MovePlayers();
+				String dataString;
+				dataString = ID + ":" + xPos + ":" + yPos + ":";
+				System.out.println(dataString);
+				DatagramPacket dataPackage = new DatagramPacket(dataString.getBytes(), dataString.length());
+				dataPackage.setAddress(InetAddress.getByName("229.15.15.15"));
+				dataPackage.setPort(7778);
+				playerDatagramSocket.send(dataPackage);
+				System.out.println("Package sent");
+
+			}
+		}
+		catch(IOException e)
+		{
+			return;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
+	}	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package server;
+
+import java.net.*;
+import java.util.Vector;
+import java.io.*;
+
+//Server class
+public class Server extends Thread
+{
+	private ServerSocket serverSocket;
+	Socket socket;
+	MulticastSocket msSocket;
+	DatagramSocket datagramSocket;
+	int clientID = 1;
+	Vector<Player> playerList = new Vector<Player>();
+	
+	/*Constructor for server. Binds the server and datagram socket to port
+	*@Param int port, the server port that will be bound
+	*/
+	public Server(int port) throws IOException
+	{
+		serverSocket = new ServerSocket(port);
+		datagramSocket = new DatagramSocket(port);
+	}
+	
+	public void run()
+	{
+		@SuppressWarnings("unused")
+		IPSender sender = new IPSender();
+		System.out.println("Port " + serverSocket.getLocalPort() + " bound. Waiting for clients..." );
+		while(true)
+		{	
+			try
+			{
+				socket = serverSocket.accept();
+				System.out.println("New connection accepted");
+				Player newPlayer = new Player(clientID, socket, datagramSocket, this);
+				clientID += 1;
+				playerList.add(newPlayer);
+				System.out.println("Player added");
+
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+				break;
+			}
+		}
+	}
+	
+	public void MovePlayers()
+    {
+    	for(int i=0;i<playerList.size();i++)
+    	{
+    		if((playerList.get(i).xPos + playerList.get(i).deltaX) > 0 && (playerList.get(i).xPos + playerList.get(i).deltaX) < 760) //<< Limits the player X movement inside the map
+    		{
+        		playerList.get(i).xPos += playerList.get(i).deltaX;
+    		}
+    		if((playerList.get(i).yPos + playerList.get(i).deltaY) > 0 && (playerList.get(i).yPos + playerList.get(i).deltaY) < 730) //<< Limits the player Y movement inside the map
+    		{
+        		playerList.get(i).yPos += playerList.get(i).deltaY;
+    		}
+
+    	}
+    }
+	
+	public void RemovePlayer(int id)
+	{
+		int index = 0;
+		for(int i=0;i<playerList.size();i++)
+		{
+			if(playerList.get(i).ID == id)
+			{
+				index = i;
+				break;
+			}
+		}
+		playerList.remove(index);
+	}
+	
+    public static void main(String[] args) 
+    {
+    	int port = 7777;
+    	try
+    	{
+    		Thread thread = new Server(port);
+    		thread.start();
+    	}
+    	catch(IOException e)
+    	{
+    		e.printStackTrace();
+    	}
+    }
+    
+}

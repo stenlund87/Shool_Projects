@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "lua",
+            "request": "attach",
+            "name": "Stingray",
+            "ip": "localhost",
+            //"processId": "6824"
+            //"port": 5858
+        }
+    ]
+}

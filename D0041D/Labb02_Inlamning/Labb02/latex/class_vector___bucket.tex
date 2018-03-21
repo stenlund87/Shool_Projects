@@ -1,0 +1,128 @@
+\hypertarget{class_vector___bucket}{\section{Vector\-\_\-\-Bucket Class Reference}
+\label{class_vector___bucket}\index{Vector\-\_\-\-Bucket@{Vector\-\_\-\-Bucket}}
+}
+
+
+{\ttfamily \#include $<$Vector\-\_\-\-Bucket.\-h$>$}
+
+Inheritance diagram for Vector\-\_\-\-Bucket\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_vector___bucket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vector___bucket_abca1b0a1699ee0507e7cf509db2915b8}{Vector\-\_\-\-Bucket} (int)
+\begin{DoxyCompactList}\small\item\em konstruktor för V\-Ector\-\_\-\-Bucket \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_vector___bucket_a81cd0b925dd282067471b03ad8edf03e}{name} ()
+\begin{DoxyCompactList}\small\item\em funktion för att få namn som anävnds till skriviningen \end{DoxyCompactList}\item 
+void \hyperlink{class_vector___bucket_aed11c6dc4386f8f0cf63f73dfc565890}{min\-\_\-sort} (std\-::vector$<$ int $>$ $\ast$\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}, int size)
+\begin{DoxyCompactList}\small\item\em sorteringsfunktion \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Headerfil till \hyperlink{class_vector___bucket}{Vector\-\_\-\-Bucket} för vektorer 
+
+Definition at line 4 of file Vector\-\_\-\-Bucket.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_vector___bucket_abca1b0a1699ee0507e7cf509db2915b8}{\index{Vector\-\_\-\-Bucket@{Vector\-\_\-\-Bucket}!Vector\-\_\-\-Bucket@{Vector\-\_\-\-Bucket}}
+\index{Vector\-\_\-\-Bucket@{Vector\-\_\-\-Bucket}!Vector_Bucket@{Vector\-\_\-\-Bucket}}
+\subsubsection[{Vector\-\_\-\-Bucket}]{\setlength{\rightskip}{0pt plus 5cm}Vector\-\_\-\-Bucket\-::\-Vector\-\_\-\-Bucket (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_vector___bucket_abca1b0a1699ee0507e7cf509db2915b8}
+
+
+konstruktor för V\-Ector\-\_\-\-Bucket 
+
+konstruktor för V\-Ector\-\_\-bucket 
+
+Definition at line 7 of file Vector\-\_\-\-Bucket.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    std::vector<int>*temp = \textcolor{keyword}{new} std::vector<int>(size,0);
+    \hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec} = temp;
+    \hyperlink{class_vector___rand_a22d1341a5b1c9e2f559a50d7d390252b}{vec\_size} = size;
+    \hyperlink{class_vector___rand_a410a79c0e3e90c52d39628e92251f0ca}{run\_time}=0;
+\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_vector___bucket_aed11c6dc4386f8f0cf63f73dfc565890}{\index{Vector\-\_\-\-Bucket@{Vector\-\_\-\-Bucket}!min\-\_\-sort@{min\-\_\-sort}}
+\index{min\-\_\-sort@{min\-\_\-sort}!Vector_Bucket@{Vector\-\_\-\-Bucket}}
+\subsubsection[{min\-\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\-\_\-\-Bucket\-::min\-\_\-sort (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ $\ast$}]{vec, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___bucket_aed11c6dc4386f8f0cf63f73dfc565890}
+
+
+sorteringsfunktion 
+
+sorteringmetoden som används i Vector\-\_\-bucket $<$Skapar buckets 
+
+Reimplemented from \hyperlink{class_vector___rand_a2cf1782a807d95cb0ec8f316de78efef}{Vector\-\_\-\-Rand}.
+
+
+
+Definition at line 26 of file Vector\-\_\-\-Bucket.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordtype}{int} n = ceil(\textcolor{keywordtype}{float}(size/10));
+    std::vector<std::vector<int>> b(n+1);           
+
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<size;i++)
+    \{
+        \textcolor{keywordtype}{int} ind=floor(\textcolor{keywordtype}{float}(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(i)/10));
+        b[ind].push\_back(\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(i));
+    \}
+
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<n;i++)\{sort(b[i].begin(),b[i].end());\}
+    \textcolor{keywordtype}{int} ind=0,i,j;
+    \textcolor{keywordflow}{for}(i=0;i<n;i++)
+    \textcolor{keywordflow}{for}(j=0;j<b[i].size();j++)\{\hyperlink{class_vector___rand_a9f72781fda366f60dc6fb8cc9345d483}{vec}->at(ind++)=b[i][j];\}
+\}\end{DoxyCode}
+\hypertarget{class_vector___bucket_a81cd0b925dd282067471b03ad8edf03e}{\index{Vector\-\_\-\-Bucket@{Vector\-\_\-\-Bucket}!name@{name}}
+\index{name@{name}!Vector_Bucket@{Vector\-\_\-\-Bucket}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Vector\-\_\-\-Bucket\-::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_vector___bucket_a81cd0b925dd282067471b03ad8edf03e}
+
+
+funktion för att få namn som anävnds till skriviningen 
+
+funktion för att returnera namn på sorteringsmetod/klass 
+
+Reimplemented from \hyperlink{class_vector___rand_ac7441ceffc151a910c9741256a80c0d0}{Vector\-\_\-\-Rand}.
+
+
+
+Definition at line 16 of file Vector\-\_\-\-Bucket.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+    \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Vector\_Bucket"};
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Bucket.\-h\item 
+H\-:/\-My Documents/\-Visual Studio 2012/\-Projects/del1lab2/del1lab2/Vector\-\_\-\-Bucket.\-cpp\end{DoxyCompactItemize}

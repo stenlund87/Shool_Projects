@@ -1,0 +1,650 @@
+package client;
+import java.awt.EventQueue;
+import java.io.IOException;
+import java.net.UnknownHostException;
+
+import javax.swing.JFrame;
+
+
+@SuppressWarnings("serial")
+public class Application extends JFrame 
+{
+	Board board;
+	/*Constructor for Application, creates the playing board
+	 * @Param String ip, the ip for the server
+	 * @Param int port, the server port
+	 * */
+    public Application(String ip, int port) throws UnknownHostException 
+    {
+    	board = new Board(ip, port);
+        add(board);
+        setSize(800, 795);
+        setResizable(false);
+        setTitle("Canon Battle");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        addWindowListener(new java.awt.event.WindowAdapter() 
+        {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) //<< When the window is closed we want to close the client socket
+            {
+            	System.out.println("ByeBye");
+            	try 
+            	{
+					board.OnExit();
+				} 
+            	catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        });
+    }
+    
+
+    
+    //Main function
+    public static void main(String[] args) throws IOException, InterruptedException 
+    {
+    	SelectServer serv = new SelectServer();
+        EventQueue.invokeLater(new Runnable() 
+        {
+            @Override
+            public void run() 
+            {
+                Application ex;
+				try 
+				{
+					ex = new Application(serv.ip, serv.port);
+					ex.setVisible(true);
+				} 
+				catch (UnknownHostException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
+            }
+        });
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package client;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.UnknownHostException;
+
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+@SuppressWarnings("serial")
+public class Board extends JPanel implements ActionListener 
+{
+
+	private Timer timer;
+    private Client client;
+    private final int DELAY = 10;
+
+    /*Constructor for Board. 
+     * Adds a key listener,set background color of the board and creates a new Client object
+     * @Param String ip, the server ip. Needed to create Client object
+     * @Param int port, the server port. Needed to create Client object 
+     * */
+    public Board(String ip, int port) throws UnknownHostException 
+    {
+        addKeyListener(new TAdapter());
+        setFocusable(true);
+        setBackground(Color.GRAY);
+        timer = new Timer(DELAY, this);
+        timer.start();  
+        client = new Client(ip, port);        
+    }
+
+    public void OnExit() throws IOException
+    {
+    	client.Exit();
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) 
+    {
+        super.paintComponent(g);
+        client.doDrawing(g,this);
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) 
+    {
+        repaint();  
+    }
+
+    private class TAdapter extends KeyAdapter 
+    {
+        @Override
+        public void keyReleased(KeyEvent e) 
+        {
+        	try 
+        	{
+				client.keyReleased(e);
+			} 
+        	catch (IOException e1)
+        	{
+				e1.printStackTrace();
+			}
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) 
+        {
+        	try 
+        	{
+				client.keyPressed(e);
+			} 
+        	catch (IOException e1)
+        	{
+				e1.printStackTrace();
+			}
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package client;
+import java.net.*;
+import java.util.HashMap;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.io.*;
+
+
+public class Client 
+{
+    public Player thisPlayer;
+    public HashMap<Integer,Player> playerList = new HashMap<Integer,Player>();
+    DataOutputStream out;
+    DataInputStream in;
+    Socket clientSocket;
+    MulticastSocket multicastSocket;
+    InetAddress group;
+    ClientListener listener;
+	InputStream input;
+	int port;
+	
+	/*Contructor for the Client.
+	 * Creates a socket connected to server and starts to listen for data
+	 * @Param string ip, the ip for the server
+	 * @Param int s_port, the server port 
+	 * */
+	public Client(String ip, int s_port) throws UnknownHostException
+	{
+		
+		String serverIP = CheckForIPv6(ip);
+		port = s_port;
+		try
+		{
+			System.out.println("connecting to " + serverIP + "on port" + port);
+			clientSocket = new Socket(serverIP,port);
+			System.out.println("Connected to " + clientSocket.getRemoteSocketAddress());
+			
+			OutputStream outToServer = clientSocket.getOutputStream();
+			out = new DataOutputStream(outToServer);
+			
+			out.writeUTF("Connect:");
+			System.out.println("Sent join message");
+			input = clientSocket.getInputStream();
+			in = new DataInputStream(input);
+			String data = in.readUTF();
+			System.out.println("Server accepted");
+			System.out.println(data);
+			String[] holder = data.split(":");
+			
+			if (holder[0].equals("NewPlayer"))
+			{
+				System.out.println("Inializing....");
+				thisPlayer = new Player("Player_right.png", Integer.parseInt(holder[1]));
+				thisPlayer.SetPosition(Integer.parseInt(holder[2]), Integer.parseInt(holder[3]));
+			}
+			
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		listener = new ClientListener();
+		listener.start();
+	}
+	
+	
+	
+	
+    /*ActionListener for when a key is pressed
+     * @Param KeyEvent e, the key that was pressed
+     * */
+    public void keyPressed(KeyEvent e) throws IOException 
+    {
+
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_A) 
+        {
+            out.writeUTF(thisPlayer.ID+":Move:Left");
+        }
+
+        if (key == KeyEvent.VK_D) 
+        {
+            out.writeUTF(thisPlayer.ID+":Move:Right");
+        }
+
+        if (key == KeyEvent.VK_W) 
+        {
+            out.writeUTF(thisPlayer.ID+":Move:Up");
+        }
+
+        if (key == KeyEvent.VK_S)
+        {
+            out.writeUTF(thisPlayer.ID+":Move:Down");
+        }
+        if(key == KeyEvent.VK_ESCAPE)
+        {
+        	Exit();
+        }
+    }
+    
+    /*ActionListener for when a key is released
+     * @Param KeyEvent e, the key that was released
+     * */
+    public void keyReleased(KeyEvent e) throws IOException 
+    {
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_A) 
+        {
+            out.writeUTF(thisPlayer.ID+":Stop:Left");
+        }
+
+        if (key == KeyEvent.VK_D) 
+        {
+            out.writeUTF(thisPlayer.ID+":Stop:Right");
+        }
+
+        if (key == KeyEvent.VK_W) 
+        {
+            out.writeUTF(thisPlayer.ID+":Stop:Up");
+        }
+
+        if (key == KeyEvent.VK_S) 
+        {
+            out.writeUTF(thisPlayer.ID+":Stop:Down");
+        }
+    }
+    
+    public void Exit() throws IOException
+    {
+    	out.writeUTF(thisPlayer.ID+":Leave:Game");
+    	clientSocket.close();
+    }
+
+    /*Method that checks if there is a IPv6 for given IP
+     * @Param String ip, the ip that will be checked
+     * @Return String IPv6 address if found, otherwise the given IPv4 address
+     * */
+    public String CheckForIPv6(String ip) throws UnknownHostException
+    {
+    	String IPv6;
+        boolean isIPv6 = false;
+        InetAddress[] AllIp = InetAddress.getAllByName(ip);
+        for(int i = 0; i<AllIp.length; i++)
+        {
+            System.out.println("Ip is "+AllIp[i]);
+            isIPv6 = AllIp[i] instanceof Inet6Address;
+            if(isIPv6)
+            {
+            	IPv6 = AllIp[i].getHostAddress();
+                System.out.println("IPv6 address is "+ ip);
+                return IPv6;
+            }
+        }
+        System.out.println("Unable to use IPv6, IPv4 is " + ip);
+        return ip;
+    }
+    
+    /*Method that draws the images on the screen
+     * @Param Graphics g
+     * @Param Board b, the board that will be drawn on
+     * */
+    void doDrawing(Graphics g, Board b) 
+    {
+        Graphics2D g2d = (Graphics2D) g;
+        for(Integer key : playerList.keySet())
+        {
+        	g2d.drawImage(playerList.get(key).GetPlayerIcon(), playerList.get(key).GetX(), playerList.get(key).GetY(), b);
+        }
+        g2d.drawImage(thisPlayer.GetPlayerIcon(), thisPlayer.GetX(), thisPlayer.GetY(), b);  
+    }
+    
+  //Listening class. Receives data from server and depending on what the data is performs certain operations
+  	public class ClientListener extends Thread
+  	{
+  	    public void run()
+  	    {
+  	    	try
+  	    	{
+  	    		InetAddress group = InetAddress.getByName("229.15.15.15");
+  	    		multicastSocket = new MulticastSocket(7778);
+  	    		multicastSocket.joinGroup(group);
+
+  		    	while(true)
+  		    	{	    	
+  		    		byte[] bytepack = new byte[500];
+  		    		DatagramPacket msreceive = new DatagramPacket(bytepack, bytepack.length);
+  		    		multicastSocket.receive(msreceive);
+  		    		String temp = new String(msreceive.getData(),0,msreceive.getLength());
+  		    		System.out.println(temp);
+  					String[] holder = temp.split(":");
+  					int playerID = Integer.parseInt(holder[0]);
+  					
+  					if(holder[1].equals("Leave") && thisPlayer.ID != playerID)
+  					{
+  						playerList.remove(Integer.parseInt(holder[0]));
+  					}
+  					else if(holder[1].equals("Leave") && thisPlayer.ID == playerID)
+  					{
+  						System.exit(1);
+  					}
+  					
+  					else if(thisPlayer.ID == Integer.parseInt(holder[0])) //<< This player receives a new position from the player
+  					{
+  						thisPlayer.SetPosition(Integer.parseInt(holder[1]), Integer.parseInt(holder[2]));
+  						continue;
+  					}
+  					else if (!playerList.containsKey(playerID)) //<< If we get an update from a player we don't have in our list
+  					{
+  						Player enemy = new Player("Enemy_player_right.png", playerID);
+  						enemy.SetEnemyPosition(Integer.parseInt(holder[1]), Integer.parseInt(holder[2]));
+  						playerList.put(playerID, enemy);			
+  					}		
+  					else if (playerList.containsKey(playerID))  //<< If we get an update from an already known player
+  					{
+  						playerList.get(playerID).SetEnemyPosition(Integer.parseInt(holder[1]), Integer.parseInt(holder[2]));	
+  					}
+  			    }
+  	    	}
+  		    catch (IOException e) {} 	 
+  	    }
+  	}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package client;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+public class Player 
+{
+	 private int x;
+	 private int y;
+	 int ID;
+	 private Image playerImage;
+	 
+	 /*Constructor for the player
+	  * @Param String playerIcon, the path to the icon the player is gonna be
+	  * */
+	 public Player(String playerIcon, int playerID) 
+	 {
+        ImageIcon ii = new ImageIcon(playerIcon);
+        playerImage = ii.getImage();
+        x = 0;
+        y = 0;
+        ID = playerID;
+	 }
+
+	 /*Method to get player x position
+	  * @Return int x, the X position of the player
+	  * */
+    public int GetX() 
+    {
+        return x;
+    }
+
+    /*Method to get player y position
+     * @Return int y, the Y position of the player
+    */
+    public int GetY()
+    {
+        return y;
+    }
+    
+    /*Method to get player icon
+     * @Return Image playerImage
+     * */
+    public Image GetPlayerIcon() 
+    {
+       return playerImage;
+    }
+    
+    /*Method to set player position and change its icon
+     * @Param xPos, the X position we want set
+     * @Param yPos, the Y position we want set
+    */
+    public void SetPosition(int xPos, int yPos)
+    {
+    	int dX = x - xPos;
+    	int dY = y - yPos;
+    	if(dX > 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Player_left.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	else if(dX < 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Player_right.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	if(dY > 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Player_up.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	else if(dY < 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Player_down.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	x = xPos;
+    	y = yPos;
+    }
+    
+    /*Method to set enemy player position and changes it's icon
+     * @Param xPos, the X position we want to set
+     * @Param yPos, the Y position we want to set
+    */
+    public void SetEnemyPosition(int xPos, int yPos)
+    {
+    	int dX = x - xPos;
+    	int dY = y - yPos;
+    	if(dX > 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Enemy_player_left.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	else if(dX < 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Enemy_player_right.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	if(dY > 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Enemy_player_up.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	else if(dY < 0)
+    	{
+    		ImageIcon imageIcon = new ImageIcon("Enemy_player_down.png");
+    		playerImage = imageIcon.getImage();
+    	}
+    	x = xPos;
+    	y = yPos;
+    }
+
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package client;
+import java.awt.FlowLayout;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import javax.swing.*;
+
+
+@SuppressWarnings("serial")
+public class SelectServer extends JFrame implements ActionListener
+{
+	public MulticastSocket socket;
+
+	InetAddress group;
+	JButton serverButton;
+	JButton connectButton;
+	JComboBox<String> box;
+	
+	Boolean connectingToServer = false;
+	public String ip = "";
+	public int port = 0;
+	
+	/*Constructor for the SelectServer
+	 * Sets up the selection window and adds buttons and ComboBox
+	 * */
+	public SelectServer() throws IOException, InterruptedException
+	{
+		group = InetAddress.getByName("239.255.255.250");
+		socket = new MulticastSocket(1900);
+		socket.joinGroup(group);	
+		
+		JFrame frame = new JFrame("Server Selection");
+		
+		frame.setLayout(new FlowLayout());
+		frame.setSize(800, 400);
+
+		serverButton = new JButton("Find servers");
+		serverButton.addActionListener(this);
+		connectButton = new JButton("Connect to Server");
+		connectButton.addActionListener(this);
+
+		box = new JComboBox<String>();
+		
+		frame.add(serverButton);
+		frame.add(connectButton);
+		frame.add(box);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		@SuppressWarnings("unused")
+		ServerListener serverListener = new ServerListener();
+
+		while(!connectingToServer)	
+		{
+			Thread.sleep(1);
+		}
+		
+		frame.dispose();
+		return;
+	}
+	
+	/*Method that registers button actions
+	 * @Param ActionEvent e, the button that was pressed
+	 * */
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getSource() == serverButton)
+		{
+			try 
+			{
+				String msg = "SERVICE QUERY JavaGameServer";
+				DatagramPacket pack = new DatagramPacket(msg.getBytes(),msg.length());
+				pack.setAddress(group);
+				pack.setPort(1900);
+				socket.send(pack);
+			} 
+			catch (IOException e1) 
+			{
+				e1.printStackTrace();
+			}				
+		}
+		
+		if(e.getSource() == connectButton)
+		{
+			if(box.getItemCount() == 0)
+			{
+				System.out.println("No server found!");
+				return;
+			}
+			
+			String selected = String.valueOf(box.getSelectedItem());
+			String[] serverList = selected.split(":");
+			ip = serverList[1];
+			port = Integer.parseInt(serverList[2]);
+			connectingToServer = true;
+		}
+	}
+	
+	class ServerListener implements Runnable
+	{
+		public ServerListener()
+		{
+			Thread thread = new Thread(this);
+			thread.start();
+		}
+
+		@Override
+		public void run() 
+		{
+			while(true)
+			{
+				try 
+				{
+					byte[] bytepack = new byte[500];
+					DatagramPacket data = new DatagramPacket(bytepack, bytepack.length);		
+					socket.receive(data);
+					String temp = new String(data.getData(),0,data.getLength());
+					String[] msg = temp.split(" ");
+					if (msg[0].equals("SERVICE") && msg[1].equals("REPLY"))
+					{
+						if (msg[2].equals("JavaGameServer"))
+						{
+							System.out.println(msg[3]);
+							String server = msg[3] + ":" + msg[4] + ":" + msg[5];
+							box.addItem(server);
+						}
+					}			
+				}
+				catch (IOException | ArrayIndexOutOfBoundsException e) 
+				{
+					continue;
+				}
+			}
+		}
+		
+	}
+	
+}
+
+
+

@@ -1,0 +1,775 @@
+/*
+ * 
+ */
+package org.w3c.dom;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+
+
+// TODO: Auto-generated Javadoc
+/**
+ * Class for the GUI window.
+ *
+ * @author ponste-5-local
+ */
+public class View extends JFrame 
+{
+	
+	/** The panel. */
+	public JPanel panel;
+	
+	/** The frame. */
+	protected JFrame frame;
+	
+	/** The citybox. */
+	public  JComboBox<?> citybox;
+	
+	/** The time box. */
+	public  JComboBox<?> timeBox;
+	
+	/** The city label. */
+	protected  JLabel cityLabel;
+	
+	/** The time label. */
+	protected  JLabel timeLabel;
+	
+	/** The temp label. */
+	protected  JLabel tempLabel;
+	
+	/** The expiration. */
+	protected  JLabel expiration;
+	
+	/** The button. */
+	protected  JButton button;
+
+	/** The selected time. */
+	protected  String selectedTime;
+	
+	/** The expiration time. */
+	protected  String expirationTime;
+	
+	/** The time field. */
+	protected  JTextField timeField;; 
+
+	/** The box index. */
+	public int boxIndex;
+	
+	/**
+	 * Contructor for View
+	 * Sets values to the different GUI elements.
+	 */
+	public View()
+	{
+		panel = new JPanel();
+		add(panel);
+
+		cityLabel = new JLabel("Stad");
+		cityLabel.setSize(5, 100);
+		cityLabel.setLocation(0, 350);
+			
+		timeLabel = new JLabel("Klockslag");
+		
+		timeField = new JTextField(8);
+		timeField.setLocation(10, -250);
+				
+		button = new JButton("Tryck för update");
+		button.setLocation(100, 100);
+
+		tempLabel = new JLabel("");
+		tempLabel.setLocation(0, 200);
+		
+		expiration = new JLabel("Hur länge ska cachen finnas i minuter");
+		
+	}
+
+	
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+package org.w3c.dom;
+
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+
+
+import java.lang.Object;
+import java.text.ParseException;
+
+
+
+/**
+ * The Class Controller.
+ */
+public class Controler implements WindowListener
+{
+	
+	private View gui;
+	private Model model;
+	
+	/** The event. */
+	public Event event;
+	
+	//private Window window;
+
+	/**
+	 * Class for controlling data flow.
+	 */
+	public Controler()
+	{
+		event = new Event();
+	}
+	
+	/**
+	 * A sub-class so stuff happens when the user click the button.
+	 */
+	public class Event implements ActionListener
+	{
+		
+		/**
+		 * Instantiates a new event.
+		 */
+		public Event()
+		{
+
+		}
+		
+		/**
+		 * Method to update the weather when the button is pressed.
+		 * @param e the e
+		 */
+		public void actionPerformed(ActionEvent e)
+		{
+			String time = "";
+			gui.selectedTime = gui.timeField.getText();
+			String expiration = model.expirationArr[gui.timeBox.getSelectedIndex()];
+			int index = gui.citybox.getSelectedIndex();
+			//System.out.println("first "+index);
+			/**
+			 * Used for getting how long the cache will exist
+			 */
+			if(expiration == "1" && model.expiredArr[index])
+			{
+				model.timeToLive[index] = 60000;
+			}
+			
+			else if(expiration == "5" &&  model.expiredArr[index])
+			{
+				model.timeToLive[index] = 5*60000;
+			}
+			
+			else if(expiration == "10" &&  model.expiredArr[index])
+			{
+				model.timeToLive[index] = 10*60000;
+			}
+			
+			else if(expiration == "60" &&  model.expiredArr[index])
+			{
+				model.timeToLive[index] = 60*60000;
+			}
+			
+			/**
+			 * Used to build a string which will be used to search the weather for the given time
+			 */
+			if(gui.selectedTime.length() == 1)
+			{
+				time = "0"+gui.selectedTime+":00";
+			}
+			else if(gui.selectedTime.length() == 2)
+			{
+				time = gui.selectedTime + ":00";
+				if(time.equals("24:00"))
+				{
+					time = "00:00";
+				}
+			}
+			else if(gui.selectedTime.length() == 0)
+			{
+				time = "";
+			}
+			
+			/**
+			 * Calls Models UpdateWeather() to get a string wich will be used to update the weather
+			 */
+			String temperature = null;
+			try 
+			{
+				temperature = model.UpdateWeather(model.cityArr[gui.citybox.getSelectedIndex()].toString(),gui.citybox.getSelectedIndex(), time);
+			} 
+			catch (ParseException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			/**
+			 * Updates the e.gui with the given weather
+			 */
+			gui.tempLabel.setText(temperature);
+		}	
+
+	}
+	
+	/**
+	 * main method to start the program.
+	 *
+	 * @param args the arguments
+	 * @throws ParseException 
+	 */
+	public static void main(String[] args) throws ParseException
+	{
+		Controler e = new Controler();
+		e.model = new Model();
+		e.model.GetLocation();
+
+		for(int i = 0; i< e.model.expiredArr.length; i++)
+		{
+			e.model.IsExpired(i);
+		}
+		
+		e.gui = new View();
+		e.gui.citybox = new JComboBox<Object>(e.model.cityArr);
+		e.gui.panel.add(e.gui.cityLabel);
+		e.gui.panel.add(e.gui.citybox);
+		e.gui.panel.add(e.gui.timeLabel);
+		e.gui.panel.add(e.gui.timeField);
+		e.gui.panel.add(e.gui.expiration);
+		e.gui.timeBox = new JComboBox<Object>(e.model.expirationArr);
+		e.gui.panel.add(e.gui.timeBox);
+		e.gui.panel.add(e.gui.button);
+		e.gui.button.addActionListener(e.event);
+		e.gui.panel.add(e.gui.tempLabel);
+		e.gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		e.gui.setSize(400, 300);
+		e.gui.addWindowListener(e);
+		e.gui.setTitle("Weather Checker");
+
+		e.gui.setResizable(false);
+		e.gui.setVisible(true);
+
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) 
+	{
+		System.out.println(model.expirationDateArr[0]);
+		model.SetCacheToFile();
+		System.out.println("Hejdå");
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/*
+ * 
+ */
+package org.w3c.dom;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EventHandler.
+ */
+public class EventHandler extends JFrame
+{
+	
+	/** The label 1. */
+	private JLabel label1;
+	
+	/** The label 2. */
+	private JLabel label2;
+	
+	/** The button 1. */
+	private JButton button1;
+	
+	/** The button 2. */
+	private JButton button2;
+	
+	/**
+	 * Instantiates a new event handler.
+	 */
+	public EventHandler()
+	{
+		setLayout(new FlowLayout());
+		
+		button1 = new JButton("Click for text");
+		add(button1);
+		
+		button2 = new JButton("Click for fuck all");
+		add(button2);
+		
+		label1 = new JLabel("");
+		add(label1);
+		
+		label2 = new JLabel("");
+		add(label2);
+		
+		Event e = new Event();
+		button1.addActionListener(e);
+		
+		Event2 ev = new Event2();
+		button2.addActionListener(ev);
+		
+	}
+	
+	
+	/**
+	 * The Class Event.
+	 */
+	public class Event implements ActionListener
+	{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent e)
+		{
+			label2.setVisible(false);
+			
+			label1.setText("Nu har det hänt något!!!!");
+			label1.setVisible(true);
+
+			button1.setVisible(false);
+			button2.setVisible(true);
+		}
+	}
+	
+	/**
+	 * The Class Event2.
+	 */
+	public class Event2 implements ActionListener
+	{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent ev)
+		{
+			label1.setVisible(false);
+			
+			label2.setText("This is label2's text");
+			label2.setVisible(true);
+			
+			button2.setVisible(false);
+			button1.setVisible(true);
+		}
+	}
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
+	public static void main(String args[])
+	{
+		EventHandler gui = new EventHandler();
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui.setTitle("Test");
+		gui.setSize(300, 100);
+		gui.setVisible(true);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * 
+ */
+package org.w3c.dom;
+
+
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import org.w3c.dom.Element;
+
+import java.io.File;
+import java.util.Calendar;
+import java.util.Date;
+
+
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+
+// TODO: Auto-generated Javadoc
+/**
+ * Class Model
+ * Handles all the data from an XML-file.
+ */
+public class Model 
+{
+	/**
+	 * String arrays to sort out the data from places.xml
+	 */
+	public String[] cityArr = new String[3];
+	
+	/** The long arr. */
+	public String[] longArr = new String[3];
+	
+	/** The lat arr. */
+	public String[] latArr = new String[3];
+	
+	/** The alt arr. */
+	public String[] altArr = new String[3];
+	
+	public String[] expirationDateArr = new String[100];
+	
+	/** The expiration arr. */
+	public String[] expirationArr = {"1","5","10","60"};
+	
+	/** The cache destroyer. */
+	public String cacheDestroyer = "";
+	
+	public String expirationDate = "";
+	
+	/** Arrays to handle when each cache will be renewed. */
+	public long[] timeToLive = new long[3];
+	
+	/** The time left. */
+	public long[] timeLeft = new long[3];
+	
+	/** Array is each cache is expired. */
+	public boolean[] expiredArr = new boolean[3];
+
+
+	
+	/**
+	 * Method to update the weather at given location and time.
+	 *
+	 * @param filename the filename
+	 * @param index the index
+	 * @param selectedTime the selected time
+	 * @return String, a string that is used for showing the user the current weather at the location
+	 * @throws ParseException 
+	 */
+	public String UpdateWeather(String filename, int index, String selectedTime) throws ParseException 
+	{	
+		IsExpired(index);
+		
+		try
+		{
+			if(expiredArr[index])
+			{
+				expirationDate = "";
+				URL url = new URL("http://api.met.no/weatherapi/locationforecast/1.9/?lat="+latArr[index]+";lon="+longArr[index]+";msl="+altArr[index]);
+				URLConnection conn = url.openConnection();
+				
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				
+				Document doc = builder.parse(conn.getInputStream());
+				TransformerFactory tfactory = TransformerFactory.newInstance();
+				Transformer xform = tfactory.newTransformer();
+				
+				File myOutput = new File(filename+".xml");
+				xform.transform(new DOMSource(doc), new StreamResult(myOutput));
+				
+				timeToLive[index] += System.currentTimeMillis();
+				expirationDateArr[index] = GetExpirationDate(timeToLive[index], "yyyy/MM/dd-HH:mm:ss.SSS");
+				
+				System.out.println("Hämtar data för: "+ filename);
+				
+				expiredArr[index] = false;
+
+				return UpdateWeather(filename, index, selectedTime);
+			}
+			else
+			{
+				String tempString = "";
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				Document doc = builder.parse(filename+".xml");
+				NodeList tempList = doc.getElementsByTagName("temperature");
+						
+				for(int i = 0; i<24; i++)
+					{
+						Node tempNode = tempList.item(i);
+						Element temperature = (Element) tempNode;
+						Node timeNode = tempNode.getParentNode().getParentNode();
+						Element time = (Element)timeNode;
+						String koll = time.getAttributeNode("from").toString().substring(17, 22);
+						
+						if(koll.equals(selectedTime))
+						{
+							tempString ="Temperaturen för "+filename+" klockan "+selectedTime +" är, "+temperature.getAttribute("value")+" grader";
+							break;
+						}
+						else
+						{
+							tempString ="Tiden du har angett går ej att finna!!                      ";
+						}
+					}	
+				return tempString;
+				}
+				}
+				catch(SAXException e)
+				{
+					e.printStackTrace();
+				}
+				catch(IOException e)
+				{
+					e.printStackTrace();	
+				}
+				catch (ParserConfigurationException e) 
+				{
+					e.printStackTrace();
+				}
+				catch(NullPointerException e)
+				{
+					e.printStackTrace();
+				}
+				catch (TransformerException e)
+				{
+					e.printStackTrace();
+				}
+				return "";
+
+		}
+
+	/**
+	 * Method for getting locations for the GUI so the user can choose from a list.
+	 */
+	public void GetLocation()
+	{
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		try
+		{
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse("places.xml");
+			NodeList cityList = doc.getElementsByTagName("locality");
+			for(int i = 0; i<cityList.getLength(); i++)
+			{
+				Node cityNode = cityList.item(i);
+				if(cityNode.getNodeType()==Node.ELEMENT_NODE)
+				{
+					Element city = (Element) cityNode;
+					String place =  city.getAttribute("name");
+					cityArr[i] = place;
+					NodeList altList = city.getChildNodes();
+					
+					for(int j = 0; j<altList.getLength(); j++)
+					{
+						Node alt = altList.item(j);
+						if(alt.getNodeType() == Node.ELEMENT_NODE)
+						{
+							Element altitude = (Element)alt;
+							longArr[i] = altitude.getAttribute("longitude");
+							latArr[i] = altitude.getAttribute("latitude");
+							altArr[i] = altitude.getAttribute("altitude");
+							expirationDateArr[i] = altitude.getAttribute("date");
+						}
+					}				
+				
+				}
+			}
+		}
+		catch(SAXException e)
+		{
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();	
+		}
+		catch (ParserConfigurationException e) 
+		{
+			e.printStackTrace();
+		}
+		catch(NullPointerException e)
+		{
+			e.printStackTrace();
+		} 
+	
+	}
+	
+	public void SetCacheToFile()
+	{
+		try
+		{
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			Document doc = builder.newDocument();
+			Element root = doc.createElement("places");
+			doc.appendChild(root);
+			for(int i = 0; i<expiredArr.length; i++)
+			{
+	
+				Element loc = doc.createElement("locality");
+				root.appendChild(loc);
+				
+				Attr name = doc.createAttribute("name");
+				name.setValue(cityArr[i]);
+				loc.setAttributeNode(name);
+				
+				Element location = doc.createElement("location");
+				loc.appendChild(location);
+				
+				Attr exp = doc.createAttribute("date");
+				exp.setValue(expirationDateArr[i]);
+				location.setAttributeNode(exp);
+				
+				Attr lon = doc.createAttribute("longitude");
+				lon.setValue(longArr[i]);
+				location.setAttributeNode(lon);
+				
+				Attr lat = doc.createAttribute("latitude");
+				lat.setValue(latArr[i]);
+				location.setAttributeNode(lat);
+				
+				Attr alt = doc.createAttribute("altitude");
+				alt.setValue(altArr[i]);
+				location.setAttributeNode(alt);
+			}
+			
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("places.xml"));
+			transformer.transform(source, result);
+
+			System.out.println("File saved!");
+
+			
+		}
+		catch (ParserConfigurationException pce)
+		{
+			pce.printStackTrace();
+		} catch (TransformerException tfe)
+		{
+			tfe.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Method to check if a chosen cache is out of date.
+	 *
+	 * @param index the index
+	 * @throws ParseException 
+	 */
+	public void IsExpired(int index) throws ParseException
+	{	
+		try
+		{
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss.SSS");
+			String oldTime = expirationDateArr[index];
+			Date oldDate = formatter.parse(oldTime);
+			Date newDate = new Date();
+			Calendar currentDate = Calendar.getInstance();
+			currentDate.setTime(newDate);
+			
+			Calendar oldOld = Calendar.getInstance();
+			oldOld.setTime(oldDate);
+			
+
+			if(currentDate.after(oldOld))
+			{
+				expiredArr[index] = true;
+			}
+			
+			else
+			{
+				expiredArr[index] = false;
+			}
+			
+		}
+		catch(IllegalArgumentException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public String GetExpirationDate(long millisec, String format)
+	{
+		SimpleDateFormat formatter = new SimpleDateFormat(format);
+		Calendar currentDate = Calendar.getInstance();
+		currentDate.setTimeInMillis(millisec);
+		
+		return formatter.format(currentDate.getTime());
+	}
+}
+
+
+

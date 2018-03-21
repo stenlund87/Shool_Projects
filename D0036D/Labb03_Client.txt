@@ -1,0 +1,541 @@
+package client;
+
+import java.awt.EventQueue;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+@SuppressWarnings("serial")
+public class Application extends JFrame
+{
+
+	private static Client client;
+	private Player player;
+	
+	
+    public Application()
+    {
+    	Player player = new Player(10,10);
+        client = new Client(player);
+        initUI();
+    }
+    
+    private void initUI() 
+    {
+
+        add(new View(client));
+        
+        setSize(800, 600);
+        setResizable(false);
+        
+        setTitle("Shooting missiles");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public static void main(String[] args) 
+    {
+        EventQueue.invokeLater(new Runnable() 
+        {
+            @Override
+            public void run() 
+            {
+                Application ex = new Application();
+                ex.setVisible(true);
+                client.ConnectToServer();
+            }
+            
+        });
+    }
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+package client;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+@SuppressWarnings("serial")
+public class View extends JPanel implements ActionListener 
+{
+
+    private final int ICRAFT_X = 40;
+    private final int ICRAFT_Y = 60;
+    private final int DELAY = 10;
+    private Timer timer;
+    
+    public Player player;   
+    private Player player2;   
+    public Client playerClient;
+
+
+    
+    public View(Client client) 
+    {
+
+    	playerClient = client;
+    	player = playerClient.playerOne;
+        initView();
+    }
+
+    private void initView()
+    {
+
+        addKeyListener(new TAdapter());
+        setFocusable(true);
+        setBackground(Color.GRAY);
+        setDoubleBuffered(true);
+
+       // player = new Player(ICRAFT_X, ICRAFT_Y);
+        //player2 = new Player(ICRAFT_X, ICRAFT_Y);
+
+        timer = new Timer(DELAY, this);
+        timer.start();
+    }
+
+    @Override
+    public void paintComponent(Graphics g) 
+    {
+    	super.paintComponent(g);
+        doDrawing(g);
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+    private void doDrawing(Graphics g) 
+    {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(player.getImage(), player.getX(),
+                player.getY(), this);
+        
+//        g2d.drawImage(player2.getImage(), player2.getX(),
+//                player2.getY(), this);  
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) 
+    {
+        updatePlayer();
+        repaint();
+    }
+
+    private void updatePlayer() 
+    {
+        player.move();
+    }
+
+    private class TAdapter extends KeyAdapter 
+    {
+
+        @Override
+        public void keyReleased(KeyEvent e) 
+        {
+            playerClient.keyReleased(e);
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) 
+        {
+			playerClient.keyPressed(e);
+        }
+    }
+}
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+package client;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+
+public class Sprite 
+{
+
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
+	protected boolean vis;
+	protected Image image;
+	
+	public Sprite(int x, int y)
+	{
+		this.x = x;
+		this.y = y;
+		vis = true;
+	}
+	
+	protected void loadImage(String imageName)
+	{
+		ImageIcon icon = new ImageIcon(imageName);
+		image = icon.getImage();
+	}
+	
+	protected void getImageDimensions()
+	{
+		width = image.getWidth(null);
+		height = image.getHeight(null);
+	}
+	
+	public Image getImage()
+	{
+		return image;
+	}
+	
+	public int getX()
+	{
+		return x;
+	}
+	
+	public int getY()
+	{
+		return y;
+	}
+	
+	public boolean isVisible()
+	{
+		return vis;
+	}
+	
+	public void setVisible(Boolean visible)
+	{
+		vis = visible;
+	}			
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+package client;
+
+
+import java.awt.event.KeyEvent;
+
+public class Player extends Sprite
+{
+	int dx;
+    int dy;
+    public int ID;
+    
+
+    public Player(int x, int y)
+    {
+    	super(x,y);
+    	initPlayer();
+    }
+    
+    public void initPlayer()
+    {
+        loadImage("Player_right.png"); 
+        getImageDimensions();
+    }
+    
+    void updatePlayer(String filename)
+    {
+        loadImage(filename); 
+        getImageDimensions();
+    }
+    
+    public void move()
+    {
+    	if(x>0 && x<700 && y>0 && y<770)
+    	{
+        	x+=dx;
+        	y+=dy;
+    	}
+    	else if(x == 700 || y<770)
+    	{
+    		x-=1;
+    		y-=1;
+    	}
+    }
+    
+    
+    public void setPos(int xPos, int yPos)
+    {	
+    	x = xPos;
+    	y = yPos;
+    	move();
+    }
+    
+    
+    
+    public int getX()
+    {
+        return x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+    
+
+    
+//    public void keyPressed(KeyEvent e)
+//    {
+//    	
+//    	switch(e.getKeyCode())
+//    	{
+//    	case KeyEvent.VK_A:
+//        	dx = -1;
+//        	updatePlayer("Player_left.png");
+//    		break;
+//    	case KeyEvent.VK_D:
+//    		dx = 1;
+//    		updatePlayer("Player_right.png");
+//    		break;
+//    	case KeyEvent.VK_W:
+//    		dy = -1;
+//    		updatePlayer("Player_up.png");
+//    		break;
+//    	case KeyEvent.VK_S:
+//    		updatePlayer("Player_down.png");
+//    		dy = 1;
+//    		break;
+//    	}
+//    }
+//    
+//    public void keyReleased(KeyEvent e)
+//    {
+//    	    	
+//    	switch(e.getKeyCode())
+//    	{
+//    	case KeyEvent.VK_A:
+//    		dx = 0;
+//    		break;
+//    	case KeyEvent.VK_D:
+//    		dx = 0;
+//    		break;
+//    	case KeyEvent.VK_W:
+//    		dy = 0;
+//    		break;
+//    	case KeyEvent.VK_S:
+//    		dy = 0;
+//    		break;
+//    	}
+//    }
+//    
+//	
+}
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+package client;
+
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.awt.event.KeyEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+
+public class Client
+{
+	
+	private Socket socket;
+	private DataInputStream in;
+	private DataOutputStream out;
+	
+	int playerID;
+	Player playerOne;
+	public ArrayList<Player> connectedPlayer = new ArrayList<Player>(10);
+	int port = 7777;
+	
+	
+	public Client(Player player)
+	{
+		playerOne = player;
+	}
+	
+	public void ConnectToServer()
+	{
+		try 
+		{
+			System.out.println("Connecting.....");
+			socket = new Socket("localhost",port);
+			
+			System.out.println("Connection to "+port+ " was successful");
+			
+			in = new DataInputStream(socket.getInputStream());
+			String test = in.readUTF();
+			System.out.println(test);
+			
+			out = new DataOutputStream(socket.getOutputStream());
+			out.writeUTF("Hello server!");
+			
+			playerOne.ID = in.readInt();
+			
+			in = new DataInputStream(socket.getInputStream());
+			System.out.println(in.readUTF());
+			
+			String data = in.readUTF();
+			System.out.println(data); //Får bara sin egen data!!!!
+			
+			String[] playerData = data.split(":");
+			int id = Integer.parseInt(playerData[0]);
+			int x = Integer.parseInt(playerData[1]);
+			int y = Integer.parseInt(playerData[2]);
+			
+
+			Listener listener = new Listener(this, in, out);
+			Thread thread = new Thread(listener);
+			thread.start();
+
+		} 
+		
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void UpdateCoordinates() throws IOException
+	{
+		DataInputStream in = new DataInputStream(socket.getInputStream());
+		String data = in.readUTF();
+		
+		String[] playerData = data.split(":");
+		int id = Integer.parseInt(playerData[0]);
+		int x = Integer.parseInt(playerData[1]);
+		int y = Integer.parseInt(playerData[2]);
+		if(id>0)
+		{
+			Player newPlayer = new Player(0,0);
+			newPlayer.ID = id;
+			connectedPlayer.add(newPlayer);
+			System.out.println("Adding player");
+		}
+		
+		if(data != "")
+		{
+
+		}
+		
+
+		for(int i = 0; i<connectedPlayer.size(); i++)
+		{
+			if(connectedPlayer.get(i).ID == id)
+			{
+				connectedPlayer.get(i).setPos(x, y);
+				connectedPlayer.get(i).move();
+				System.out.println("Hämtar data!!!!");
+				playerOne.move();
+				break;
+			}
+		}		
+	}
+	
+	public void SendDataToServer()
+	{
+		try 
+		{
+			DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+			int id = this.playerOne.ID;
+			int x = this.playerOne.getX();
+			int y = this.playerOne.getY();
+			String bla = id+":"+x+":"+y;
+			out.writeUTF(bla);	
+			System.out.println("Skickar data!!!!!!");
+		} 
+		catch (IOException e1)
+		{
+			e1.printStackTrace();
+
+		}	
+	}
+	
+	
+	 public void keyPressed(KeyEvent e)
+	    {
+	    	
+	    	switch(e.getKeyCode())
+	    	{
+	    	case KeyEvent.VK_A:
+	        	playerOne.dx = -1;
+	        	playerOne.updatePlayer("Player_left.png");
+	        	SendDataToServer();
+	    		break;
+	    	case KeyEvent.VK_D:
+	    		playerOne.dx = 1;
+	    		playerOne.updatePlayer("Player_right.png");
+	    		SendDataToServer();
+	    		break;
+	    	case KeyEvent.VK_W:
+	    		playerOne.dy = -1;
+	    		playerOne.updatePlayer("Player_up.png");
+	    		SendDataToServer();
+	    		break;
+	    	case KeyEvent.VK_S:
+	    		playerOne.updatePlayer("Player_down.png");
+	    		playerOne.dy = 1;
+	    		SendDataToServer();
+	    		break;
+	    	}
+	    }
+	    
+	    public void keyReleased(KeyEvent e)
+	    {
+	    	    	
+	    	switch(e.getKeyCode())
+	    	{
+	    	case KeyEvent.VK_A:
+	    		playerOne.dx = 0;
+	    		break;
+	    	case KeyEvent.VK_D:
+	    		playerOne.dx = 0;
+	    		break;
+	    	case KeyEvent.VK_W:
+	    		playerOne.dy = 0;
+	    		break;
+	    	case KeyEvent.VK_S:
+	    		playerOne.dy = 0;
+	    		break;
+	    	}
+	    }
+}
+
+class Listener extends Thread
+{
+	
+	public Client playerClient;
+	public DataInputStream inputStream;
+	public DataOutputStream outputStream;
+	
+	Listener(Client client, DataInputStream in, DataOutputStream out)
+	{
+		playerClient = client;
+		inputStream = in;
+		outputStream = out;
+	}
+	
+	public void run()
+	{
+		while(true)
+		{
+			try 
+			{
+				playerClient.UpdateCoordinates();
+				playerClient.SendDataToServer();
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	    
+		
+}
+
