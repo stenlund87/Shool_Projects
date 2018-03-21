@@ -1,0 +1,2 @@
+https://projects.gscept.com/keys/
+svn+ssh://ponste-5@svn.gscept.com/svn/GD15
