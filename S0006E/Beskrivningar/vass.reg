@@ -1,0 +1,16 @@
+Windows Registry Editor Version 5.00
+[HKEY_CURRENT_USER\SOFTWARE\Whole Tomato\Visual Assist X]
+"AutoRegLicenseUser"="johannes.hirche@ltu.se (60-user classroom license) Support ends 2016.03.14"
+"AutoRegLicenseKey"="00001Y-6W4Z1P-V2DU1D-89HZAK-27VJFD-P84KGQ-VVZBPW-22VYCT-UBDD51-WQDUK9-T2GK7W"
+
+[HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Whole Tomato\Visual Assist X]
+"AutoRegLicenseUser"="johannes.hirche@ltu.se (60-user classroom license) Support ends 2016.03.14"
+"AutoRegLicenseKey"="00001Y-6W4Z1P-V2DU1D-89HZAK-27VJFD-P84KGQ-VVZBPW-22VYCT-UBDD51-WQDUK9-T2GK7W"
+
+[HKEY_CURRENT_USER\SOFTWARE\Whole Tomato\Visual Assist X]
+"UserName"=-
+"UserKey"=-
+
+[HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Whole Tomato\Visual Assist X]
+"UserName"=-
+"UserKey"=-

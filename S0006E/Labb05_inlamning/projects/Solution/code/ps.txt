@@ -1,0 +1,38 @@
+#version 430
+layout(location=0) in vec2 UV;
+layout(location=1) in vec3 vertPos;
+layout(location=2) in vec3 normalInterp;
+out vec3 Color;
+uniform sampler2D texSampler;
+uniform vec3 lightPos;
+uniform vec3 ambientColor;
+uniform vec3 diffuseColor;
+uniform vec3 specColor;
+uniform float shininess;
+uniform float screenGamma = 2.2;
+void main()
+{
+
+	vec3 normal = normalize(normalInterp);
+	//vec3 lightDir = normalize(vertPos - lightPos);
+	vec3 lightDir = normalize(lightPos - vertPos);
+
+	float lambertian = max(dot(lightDir,normal), 0.0);
+	float specular = 0.0;
+
+	if(lambertian > 0.0) 
+	{
+
+		vec3 viewDir = normalize(-vertPos);
+
+		vec3 halfDir = normalize(lightDir + viewDir);
+		float specAngle = max(dot(halfDir, normal), 0.0);
+		specular = pow(specAngle, shininess);
+		
+	}
+	vec3 colorLinear = ambientColor + lambertian * diffuseColor + specular * specColor;
+	vec3 colorGammaCorrected = pow(colorLinear, vec3(1.0/screenGamma));
+	
+	Color = texture(texSampler,UV).rgb*(ambientColor + lambertian) + specular * specColor;
+	//Color = (texture(texSampler,UV).rgb)*colorGammaCorrected;
+}
